@@ -1,0 +1,389 @@
+﻿@model Open_Schooling.Models.PageStatus
+
+@{
+    ViewBag.Title = "Admin_Details";
+    Layout = "~/Views/Shared/Home_Layout.cshtml";
+}
+
+
+<style>
+    #pagetable {
+        display: flex;
+        padding: 5px;
+        width: '100%';
+        height: auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #msgtable {
+        display: flex;
+        padding: 5px;
+        width: '100%';
+        height: auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    table tr td {
+        width: auto;
+        align-content: center;
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .button-container {
+        display: flex;
+    }
+
+    #btn_registration_Excel {
+        width: 22%;
+        height: 40px;
+        margin-left: 10px
+    }
+
+    #btn_application_Excel {
+        width: 20%;
+        height: 40px;
+        margin-left: 10px
+    }
+
+    #payment_fail_btn {
+        margin-left: 20px;
+    }
+</style>
+
+
+
+<h3 align="center" style="font-family:'Times New Roman', Times, serif">Massage HomePage</h3>
+<div>
+
+    <form>
+
+        <div class="center">
+            <div class="col-sm-2" style="margin:30px 30px 5px 400px; width: 80%; height: 35PX ">
+                @Html.TextBoxFor(model => model.Status, new { @class = "form-control", @placeholder = "Enter IMP MSG For HomePage.....", @name = "Status" })
+                @*<input type="text" placeholder="Enter IMP Msg For Homdashboard...." style="margin:30px 30px 5px 400px; width: 80%; height: 35PX " id="msginput" />*@
+            </div>
+
+            <div class="col-md-9">
+                <input type="button" class="btn btn-success" value="Submit" id="btn-submit" onclick="submitmsg()" />
+            </div>
+
+        </div>
+
+        
+
+    </form>
+
+</div>
+
+
+
+<br /><br /><br /><br />
+<br />
+<br />
+<div class="row" style="border:inset 1px  #3eadcf"></div>
+<h3 align="center" style="font-family:'Times New Roman',Time,serif">Page Activation</h3>
+
+<div id="pagetable">
+    <table class="table table-bordered" border="1px">
+        <thead>
+            <tr>
+                <th style="padding:15px">ID</th>
+                <th style="padding:15px">Page Name</th>
+                <th style="padding:15px"> Page Status</th>
+                <th style="padding:15px">Edit Status</th>
+            </tr>
+        </thead>
+        <tbody id="tabledata">
+        </tbody>
+    </table>
+</div>
+
+
+<br />
+<div class="row" style="border:inset 2px #3eadcf"></div>
+<h3 align="center" style="font-family:'Times New Roman',Time,serif">Massage Status</h3>
+
+<div id="msgtable">
+    <table border="2px">
+        <thead>
+            <tr>
+                <th style="padding:15px">Message Id</th>
+                <th style="padding:15px">Message</th>
+                <th style="padding:15px"> Message Status</th>
+                <th style="padding:15px">Status</th>
+                <th style="padding:15px">Delete</th>
+            </tr>
+        </thead>
+        <tbody id="msgtabledata">
+        </tbody>
+    </table>
+</div>
+
+<br />
+<center><h2> Payment Failed Student List</h2></center>
+<div id="pagetable">
+    <table border="2px">
+        <thead>
+            <tr>
+                <th style="padding:15px">Sr No.</th>
+                <th style="padding:15px">ApplicationId</th>
+                <th style="padding:15px"> First_Name</th>
+                <th style="padding:15px">Last_Name</th>
+                <th style="padding:15px">Mobile_No</th>
+            </tr>
+        </thead>
+        <tbody id="paymentfailedata">
+        </tbody>
+    </table>
+</div>
+
+<div style="display:flex; justify-content:center; margin-top:30px">
+
+    <input type="button" class="btn btn-success" id="btn_registration_Excel" value="DOWNLOAD_REGISTRATION_LIST">
+    <input type="button" style="" class="btn btn-success" id="btn_application_Excel" value="DOWNLOAD_APPLICATION_LIST">
+
+</div>
+
+
+
+
+
+<script>
+
+    $(document).ready(function () {
+
+        Bind_Part();
+        Bind_Part2();
+        get_Payment_Failed_Record();
+
+
+        function Bind_Part() {
+
+            $.ajax({
+                url: '../Admin/Get_PageInfo',
+                type: "POST",
+                dataType: 'json',
+
+                success: function (Data) {
+
+                    temp = "";
+
+                    if (Data.Result) {
+                        $.each(Data.Response, function (i, data) {
+
+
+                            var editurl = "edit_Status('/Admin/EditStatus/" + data.Id + "')";
+                            var s = data.Status ? "#00a100" : "#FF1A1A";
+                            ; temp += `<tr><td>` + (i + 1) + `</td><td>` + data.Pagename + `</td><td>` + data.Status + `</td><td>` + `<button  id="edit" class="btn btn-success rounded-pill d-inline" style="background-color:${s};color:white; border - radius: 12px: " onclick=` + editurl + ` >Change Status</button>` + `</td ></tr >`;
+                        })
+                        $("#tabledata").append(temp);
+
+                    }
+                    else {
+
+                        alert(Data.Response);
+                    }
+                }
+            });
+        }
+
+
+        function Bind_Part2() {
+
+            $.ajax({
+                url: '../Admin/Get_MsgInfo',
+                type: "POST",
+                dataType: 'json',
+
+                success: function (Data) {
+
+                    temp = "";
+
+                    if (Data.Result) {
+                        $.each(Data.Response, function (i, data) {
+
+                            var editurl2 = "edit_MsgStatus('/Admin/EditMsgStatus/" + data.Id + "')";
+                            var s = data.MsgStatus ? "#198754" : "#0d6efd";
+                            var deleteurl = "deletemsg('/Admin/MSG_Delete/" + data.Id + "')";
+                            var editrecord = "";
+                            temp += `<tr><td>` + (i + 1) + `</td><td>` + data.Message + `</td><td>` + data.MsgStatus + `</td><td>` + `<button  id="editmsg" class="btn btn-success" style="background-color:${s};color:white; border - radius: 12px: " onclick=` + editurl2 + `  >Change Status</button>` + `</td ><td>` + `<input type='button' value="Edit" class="btn btn-danger" onclick="'++'"></td><td>` + `<input type="button" class="btn btn-danger" onclick="` + deleteurl + `" value="Delete"/>` + `</td></tr >`;
+                        })
+                        $("#msgtabledata").append(temp);
+
+                    }
+                    else {
+
+                        alert(Data.Response);
+                    }
+                }
+            });
+        }
+
+    });
+
+    $("#btn_registration_Excel").click(function () {
+
+        debugger
+
+        $.ajax({
+            type: 'POST',
+            url: '../Admin/Download_Registration_Data',
+            dataType: 'json',
+
+            success: function (data) {
+                if (data.Result) {
+                    window.location.href = "../Reg_Excel/" + data.FileName + ".xlsx";
+                }
+                else {
+                    Error_Alert(data.Response);
+                }
+            },
+            error: function (ex) {
+                Error_Alert('Failed.' + ex);
+            }
+        });
+    });
+
+    $("#btn_application_Excel").click(function () {
+
+        debugger
+
+        $.ajax({
+            type: 'POST',
+            url: '../Admin/Download_Application_Data',
+            dataType: 'json',
+
+            success: function (data) {
+                if (data.Result) {
+                    window.location.href = "../Application_Excel/" + data.FileName + ".xlsx";
+                }
+                else {
+                    Error_Alert(data.Response);
+                }
+            },
+            error: function (ex) {
+                Error_Alert('Failed.' + ex);
+            }
+        });
+    });
+
+
+    function edit_Status(url) {
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            success: function (Data) {
+                if (Data.Result) {
+
+                    window.location.reload();
+
+                } else {
+
+                    alert(Data.Response);
+                }
+            }
+        })
+
+    }
+    function deletemsg(url) {
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            success: function (Data) {
+                if (Data.Result) {
+
+                    window.location.reload();
+
+                }
+                if (Data.Response) {
+                    alert(Data.Response)
+                }
+                else {
+
+                    alert(Data.Response);
+                }
+            }
+        })
+
+    }
+    function edit_MsgStatus(url) {
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            success: function (Data) {
+                if (Data.Result) {
+
+                    window.location.reload();
+
+                } else {
+
+                    alert(Data.Response);
+                }
+            }
+        })
+
+    }
+
+    function submitmsg() {
+
+        $.ajax({
+            type: 'POST',
+            url: '../Admin/Save_Message_To_DB',
+            dataType: 'json',
+            data: { msg: $("#Status").val() },
+            success: function (data) {
+                if (data.Result) {
+
+                    window.location.reload();
+
+                } else {
+
+                    alert(data.Response);
+                }
+
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+        return false;
+
+    }
+
+    function get_Payment_Failed_Record() {
+
+        $.ajax({
+            url: '../Admin/Get_Payment_failed_record',
+            type: "POST",
+            dataType: 'json',
+            success: function (Data) {
+
+                stu = "";
+
+                if (Data.Result) {
+                    $.each(Data.Response, function (i, data) {
+                        console.log(data);
+
+                        stu += `<tr><td>` + (i + 1) + `</td><td>` + data.ApplicationId + `</td><td>` + data.First_Name + `</td><td>` + data.Last_Name + `</td><td>` + data.Mobile_No + `</td><t/r>`;
+                    })
+                    $("#paymentfailedata").append(stu);
+
+                }
+                else {
+
+                    alert(Data.Response);
+                }
+            }
+
+        });
+
+    }
+
+</script>
+

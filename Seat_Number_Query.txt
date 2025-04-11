@@ -1,0 +1,8 @@
+
+.
+
+update A set A.seatnumber =b.Rollno from Tbl_result A,
+  (select Form_No,'MH0'+ REPLACE(STD,'th','')+CAST(10000+ROW_NUMBER()
+   Over (ORDER BY Form_No) As varchar)Rollno
+   from Tbl_result where seatnumber is null and STD='8' and Division='PUNE')B
+   where A.Form_No=B.Form_No and A.seatnumber is null and STD='8' and A.Division='PUNE'

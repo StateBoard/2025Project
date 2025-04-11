@@ -1,0 +1,195 @@
+﻿@model IEnumerable<Open_Schooling.Models.CenterViewModel>
+@{
+    ViewBag.Title = "Download_Page";
+    Layout = "~/Views/Shared/Center_Layout.cshtml";
+}
+
+
+
+<style>
+    .form-control {
+        color: black;
+        padding: 1px;
+        font-size: 16px;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #ffffff;
+        min-width: 240px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #cac4c4;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    table {
+        width: 50%;
+    }
+</style>
+
+
+
+
+<div class="container">
+    <div class="col-sm-2 dropdown" style=" margin-left:800px; margin-top:30px; ">
+        <label style="margin-right:30px;">Select Type :</label>
+        <div>
+            <button class="form-control">Select  Type</button>
+            <div class="dropdown-content">
+                <a id="register">Registration Form</a>
+                <a id="EC">Download EC</a>
+                <a id="HallTicket">Download Hall Ticket</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered " id="regi" style="width: 35%; margin-left: 50px; display: none;">
+    <thead style="background-color:silver">
+        <tr>
+            <th scope="col">Sr.No.</th>
+            <th scope="col">Application Id</th>
+
+            <th scope="col">Registration Form</th>
+
+        </tr>
+    </thead>
+    @{int i = 1;}
+    @foreach (var item in Model)
+    {
+        <tboy>
+            <tr>
+                <td>
+                    <span>@i</span>
+                    @{i++;}
+                </td>
+                <td> @item.ApplicationId</td>
+
+                <td>@Html.ActionLink("Registration Form", "../Home/PrintForm", new { ApplicationId = @item.ApplicationId }, new { @class = "btn-success btn-sm" })</td>
+
+            </tr>
+        </tboy>
+    }
+</table>
+
+<table class="table  table-bordered " id="ec" style="width: 35%; margin-left: 50px; display: none;">
+    <thead style="background-color:silver">
+        <tr>
+            <th scope="col">Sr.No.</th>
+            <th scope="col">Application Id</th>
+
+            <th scope="col">EC Status</th>
+            <th scope="col">Download EC</th>
+
+        </tr>
+    </thead>
+    @{int j = 1;}
+    @foreach (var item in Model)
+    {
+        <tboy>
+            <tr>
+                <td>
+                    <span>@j</span>
+                    @{j++;}
+                </td>
+                <td> @item.ApplicationId</td>
+
+                <td> @item.EC_No</td>
+
+                @if (item.Ec_Status != "Completed")
+                {
+                    <td>
+                        <lanel>NA</lanel>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.ActionLink("Download", "EnrollmentCertificate", new { ApplicationId = @item.ApplicationId }, new { @class = "btn-primary btn-sm" })
+                    </td>
+                }
+
+
+
+
+
+            </tr>
+        </tboy>
+    }
+</table>
+
+<table class="table  table-bordered " id="Hall" style="width:35%; margin-left:50px; display:none;">
+    <thead style="background-color:silver">
+        <tr>
+            <th scope="col">Sr.No.</th>
+            <th scope="col">Application Id</th>
+
+
+            <th scope="col">Download Hall Ticket</th>
+        </tr>
+    </thead>
+    @{int k = 1;}
+    @foreach (var item in Model)
+    {
+        <tboy>
+            <tr>
+                <td>
+                    <span>@k</span>
+                    @{k++;}
+                </td>
+                <td> @item.ApplicationId</td>
+
+
+
+
+
+
+                <td>
+                    @Html.ActionLink("Download Hallticket", "../Exam_HallTikit/HalltikitPrint", new { ApplicationId = @item.ApplicationId }, new { @class = "btn-primary btn-sm" })
+                </td>
+
+            </tr>
+        </tboy>
+    }
+</table>
+
+
+<script>
+    $("#register").click(function () {
+        $("#regi").show();
+        $("#ec").hide();
+        $("#Hall").hide();
+    });
+    $("#EC").click(function () {
+        $("#ec").show();
+        $("#regi").hide();
+        $("#Hall").hide();
+    });
+    $("#HallTicket").click(function () {
+        $("#Hall").show();
+        $("#regi").hide();
+        $("#ec").hide();
+    });
+</script>

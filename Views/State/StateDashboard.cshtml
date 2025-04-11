@@ -1,0 +1,147 @@
+﻿@model Open_Schooling.Models.Division_List_Model
+@{
+    Layout = "~/Views/Shared/State_Layout.cshtml";
+    ViewBag.Title = "StateDashboard";
+}
+
+<style>
+
+    table, th, td {
+        border: 1px solid #c1d0d9b8;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+
+    #btn_Excel {
+        width: 200px;
+        padding: 8px;
+        position: absolute;
+        right: 20px;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+</style>
+
+<div class="row">
+    
+        <div class="col-sm-12 text-center">
+
+            <h2>StateDashboard</h2>
+
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <h2></h2>
+                <input type="button" class="btn btn-success" id="btn_Excel" value="Download Excel"><br />
+            </div>
+        </div>
+    
+</div>
+<div class="row">
+    <div style="float:right;  margin-right:50px;padding-top:10px;color:red;font-size:18px;">
+        @TempData["count"].ToString()
+    </div>
+</div>
+<br />
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+<form id="batch_form">
+
+    <div class="row">
+
+
+
+
+        <div class="col-sm-2">
+            <label>Select Division :</label>
+            @Html.DropDownListFor(m => m.Div_Code, new List<SelectListItem> {
+            new SelectListItem { Text = "Select Division",   Value = "0", Selected = true,Disabled = true},
+            new SelectListItem{Text="PUNE", Value="1"},
+            new SelectListItem{Text="NAGPUR", Value="2"},
+            new SelectListItem{Text="AURANGABAD", Value="3"},
+            new SelectListItem{Text="MUMBAI", Value="4"},
+            new SelectListItem{Text="KOLHAPUR", Value="5"},
+            new SelectListItem{Text="AMRAVATI", Value="6"},
+            new SelectListItem{Text="NASHIK", Value="7"},
+            new SelectListItem{Text="LATUR", Value="8"},
+            new SelectListItem{Text="KONKAN ", Value="9"},
+            }, new { @name = "Type", @class = "form-control" })
+        </div>
+       
+    </div>
+
+
+    <br />
+    <br />
+    <center>
+        <table class="AppFormTable" id="tbl_list" style="background-color: #e7fafe;"></table>
+    </center>
+</form>
+
+<script>
+
+    $("#Div_Code").change(function () {
+
+        Get_Inspection_Record("0");
+
+    });
+    $("#btn_Excel").click(function () {
+
+        Get_Inspection_Record("1");
+
+    });
+    function Get_Inspection_Record(Excel) {
+        $.ajax({
+            type: 'POST',
+            url: '../State/StateDashboard',
+            dataType: 'json',
+            data: {
+                Div_Code: $("#Div_Code").val(),
+
+                Excel: Excel
+            },
+            beforeSend: function () {
+                Showloader();
+            },
+            complete: function () {
+                Hideloader();
+            },
+            success: function (data) {
+
+                var temp = "";
+                temp += `<thead>     <tr><td>Sr.No.</td>                            <td>Enrollment_No</td>               <td>ApplicationId </td>               <td> First_Name</td>            <td>Middle_Name </td>          <td> Last_Name</td>           <td>Mother_Name </td>            <td>Adhar_no </td>          <td> Mobile_No</td>             <td>Address </td>          <td>Village </td>             <td>District </td>              <td>Taluka </td>             <td>State </td>         <td>Pin_Code </td>            <td>Date_of_Birth </td           ><td>DOB_Words </td>           <td>DOB_Village </td>            <td>DOB_Taluka </td>         <td> DOB_District</td>                <td>Email </td>               <td> Gender</td>         <td> Standard</td>               <td>Medium </td>     <td>District_Center </td>               <td> Taluka_Center</td>             <td> Center</td>                 <td>Center_Code </td>               <td> Previous_Attend_School_YN </td>      <td> Previous_Attend_School </td>         <td>Handicap  </td>       <td> Candidate_Handicaped_YN </td>                  <td> Subject_List </td>             <td>Minority_Religion  </td>           <td>Nsqf_Subject  </td>     <td> Password </td>               <td> Payment_Status </td>    <td> DateNow </td></tr></thead><tbody`;
+                if (data.Result) {
+                    $("#tbl_list").empty();
+                    $.each(data.Response, function (i, data) {
+                        temp += `<tr><td>` + (i + 1) + `</td><td>` + data.Enrollment_No + `</td><td>` + data.ApplicationId + `</td><td>` + data.First_Name + `</td><td>` + data.Middle_Name + `</td><td>` + data.Last_Name + `</td><td>` + data.Mother_Name + `</td><td>` + data.Adhar_no + `</td><td>` + data.Mobile_No + `</td><td>` + data.Address + `</td><td>` + data.Village + `</td><td>` + data.District + `</td><td>` + data.Taluka + `</td><td>` + data.State + `</td><td>` + data.Pin_Code + `</td><td>` + data.Date_of_Birth + `</td><td>` + data.DOB_Words + `</td><td>` + data.DOB_Village + `</td><td>` + data.DOB_Taluka + `</td><td>` + data.DOB_District + `</td><td>` + data.Email + `</td><td>` + data.Gender + `</td><td>` + data.Standard + `</td><td>` + data.Medium + `</td><td>` + data.District_Center + `</td><td>` + data.Taluka_Center + `</td><td>` + data.Center + `</td><td>` + data.Center_Code + `</td><td>` + data.Previous_Attend_School_YN + `</td><td>` + data.Previous_Attend_School + `</td><td>` + data.Handicap + `</td><td>` + data.Candidate_Handicaped_YN + `</td><td>` + data.Subject_List + `</td><td>` + data.Minority_Religion + `</td><td>` + data.Nsqf_Subject + `</td><td>` + data.Password + `</td><td>` + data.Payment_Status + `</td><td>` + data.DateNow + `</td></tr>`;
+                    });
+                    temp += `</tbody>`;
+                    $("#tbl_list").append(temp);
+
+                    if (Excel == "1") {
+
+                        window.location.href = "../State/" + data.FileName + ".xlsx";
+
+                    }
+                }
+            },
+            error: function (ex) {
+                alert('Failed.' + ex);
+            }
+        });
+    }
+
+</script>

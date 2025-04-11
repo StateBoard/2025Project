@@ -1,0 +1,1686 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Open_Schooling_2025Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="All_Taluka">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Taluka" Type="nvarchar" MaxLength="255" />
+          <Property Name="District" Type="nvarchar" MaxLength="255" />
+          <Property Name="Division" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Center_Login_Information">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UDISE_No" Type="float" />
+          <Property Name="Center_Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Division" Type="nvarchar" MaxLength="50" />
+          <Property Name="Div_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="District" Type="nvarchar" MaxLength="50" />
+          <Property Name="Taluka" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact_Center_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Center_Name" Type="nvarchar(max)" />
+          <Property Name="Contact" Type="float" />
+          <Property Name="Medium" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="nvarchar" MaxLength="50" />
+          <Property Name="District_Code" Type="int" />
+          <Property Name="State" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="State_Code" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Tbl_Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="MsgStatus" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Open_Schooling_2025.dbo.Tbl_AF_Backup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tbl_AF_Backup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Form_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="UDISE_No" Type="nvarchar(max)" />
+          <Property Name="Contact_center" Type="nvarchar(max)" />
+          <Property Name="Last_name" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Middle_name" Type="nvarchar(max)" />
+          <Property Name="Mother_name" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Pincode" Type="nvarchar(max)" />
+          <Property Name="Mobile_no" Type="nvarchar(max)" />
+          <Property Name="Place_of_birth" Type="nvarchar(max)" />
+          <Property Name="Date_of_birth" Type="nvarchar(max)" />
+          <Property Name="Adhar_no" Type="nvarchar(max)" />
+          <Property Name="Gender" Type="nvarchar(max)" />
+          <Property Name="Minority_Religion" Type="nvarchar(max)" />
+          <Property Name="Category" Type="nvarchar(max)" />
+          <Property Name="Divyang" Type="nvarchar(max)" />
+          <Property Name="Medium" Type="nvarchar(max)" />
+          <Property Name="Type_Of_User" Type="nvarchar(max)" />
+          <Property Name="Subjects" Type="nvarchar(max)" />
+          <Property Name="Subject1" Type="nvarchar(max)" />
+          <Property Name="Subject2" Type="nvarchar(max)" />
+          <Property Name="Subject3" Type="nvarchar(max)" />
+          <Property Name="Subject4" Type="nvarchar(max)" />
+          <Property Name="Subject5" Type="nvarchar(max)" />
+          <Property Name="EC_Year" Type="nvarchar(max)" />
+          <Property Name="EC_Number" Type="nvarchar(max)" />
+          <Property Name="LastExamYear" Type="nvarchar(max)" />
+          <Property Name="LastExamSeatNo" Type="nvarchar(max)" />
+          <Property Name="Seat_No" Type="nvarchar(max)" />
+          <Property Name="Year_Id" Type="nvarchar(max)" />
+          <Property Name="Ip" Type="nvarchar(max)" />
+          <Property Name="DateNow" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar(max)" />
+          <Property Name="Signature" Type="nvarchar(max)" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Application_Form">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Form_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="UDISE_No" Type="nvarchar(max)" />
+          <Property Name="Contact_center" Type="nvarchar(max)" />
+          <Property Name="Last_name" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Middle_name" Type="nvarchar(max)" />
+          <Property Name="Mother_name" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Pincode" Type="nvarchar(max)" />
+          <Property Name="Mobile_no" Type="nvarchar(max)" />
+          <Property Name="Place_of_birth" Type="nvarchar(max)" />
+          <Property Name="Date_of_birth" Type="nvarchar(max)" />
+          <Property Name="Adhar_no" Type="nvarchar(max)" />
+          <Property Name="Gender" Type="nvarchar(max)" />
+          <Property Name="Minority_Religion" Type="nvarchar(max)" />
+          <Property Name="Category" Type="nvarchar(max)" />
+          <Property Name="Divyang" Type="nvarchar(max)" />
+          <Property Name="Medium" Type="nvarchar(max)" />
+          <Property Name="Type_Of_User" Type="nvarchar(max)" />
+          <Property Name="Subjects" Type="nvarchar(max)" />
+          <Property Name="Subject1" Type="nvarchar(max)" />
+          <Property Name="Subject2" Type="nvarchar(max)" />
+          <Property Name="Subject3" Type="nvarchar(max)" />
+          <Property Name="Subject4" Type="nvarchar(max)" />
+          <Property Name="Subject5" Type="nvarchar(max)" />
+          <Property Name="EC_Year" Type="nvarchar(max)" />
+          <Property Name="EC_Number" Type="nvarchar(max)" />
+          <Property Name="LastExamYear" Type="nvarchar(max)" />
+          <Property Name="LastExamSeatNo" Type="nvarchar(max)" />
+          <Property Name="Seat_No" Type="nvarchar(max)" />
+          <Property Name="Year_Id" Type="nvarchar(max)" />
+          <Property Name="Ip" Type="nvarchar(max)" />
+          <Property Name="DateNow" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar(max)" />
+          <Property Name="Signature" Type="nvarchar(max)" />
+          <Property Name="Standard" Type="nvarchar(max)" />
+          <Property Name="Division" Type="nvarchar(max)" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Open_Schooling_2025.dbo.Tbl_Application_Form_bk' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tbl_Application_Form_bk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Form_No" Type="nvarchar(max)" />
+          <Property Name="UDISE_No" Type="nvarchar(max)" />
+          <Property Name="Contact_center" Type="nvarchar(max)" />
+          <Property Name="Last_name" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Middle_name" Type="nvarchar(max)" />
+          <Property Name="Mother_name" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Pincode" Type="nvarchar(max)" />
+          <Property Name="Mobile_no" Type="nvarchar(max)" />
+          <Property Name="Place_of_birth" Type="nvarchar(max)" />
+          <Property Name="Date_of_birth" Type="nvarchar(max)" />
+          <Property Name="Adhar_no" Type="nvarchar(max)" />
+          <Property Name="Gender" Type="nvarchar(max)" />
+          <Property Name="Minority_Religion" Type="nvarchar(max)" />
+          <Property Name="Category" Type="nvarchar(max)" />
+          <Property Name="Divyang" Type="nvarchar(max)" />
+          <Property Name="Medium" Type="nvarchar(max)" />
+          <Property Name="Type_Of_User" Type="nvarchar(max)" />
+          <Property Name="Subjects" Type="nvarchar(max)" />
+          <Property Name="Subject1" Type="nvarchar(max)" />
+          <Property Name="Subject2" Type="nvarchar(max)" />
+          <Property Name="Subject3" Type="nvarchar(max)" />
+          <Property Name="Subject4" Type="nvarchar(max)" />
+          <Property Name="Subject5" Type="nvarchar(max)" />
+          <Property Name="EC_Year" Type="nvarchar(max)" />
+          <Property Name="EC_Number" Type="nvarchar(max)" />
+          <Property Name="LastExamYear" Type="nvarchar(max)" />
+          <Property Name="LastExamSeatNo" Type="nvarchar(max)" />
+          <Property Name="Seat_No" Type="nvarchar(max)" />
+          <Property Name="Year_Id" Type="nvarchar(max)" />
+          <Property Name="Ip" Type="nvarchar(max)" />
+          <Property Name="DateNow" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar(max)" />
+          <Property Name="Signature" Type="nvarchar(max)" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Open_Schooling_2025.dbo.Tbl_Application_Form_Hallticket_bk' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tbl_Application_Form_Hallticket_bk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Form_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="UDISE_No" Type="nvarchar(max)" />
+          <Property Name="Contact_center" Type="nvarchar(max)" />
+          <Property Name="Last_name" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Middle_name" Type="nvarchar(max)" />
+          <Property Name="Mother_name" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Pincode" Type="nvarchar(max)" />
+          <Property Name="Mobile_no" Type="nvarchar(max)" />
+          <Property Name="Place_of_birth" Type="nvarchar(max)" />
+          <Property Name="Date_of_birth" Type="nvarchar(max)" />
+          <Property Name="Adhar_no" Type="nvarchar(max)" />
+          <Property Name="Gender" Type="nvarchar(max)" />
+          <Property Name="Minority_Religion" Type="nvarchar(max)" />
+          <Property Name="Category" Type="nvarchar(max)" />
+          <Property Name="Divyang" Type="nvarchar(max)" />
+          <Property Name="Medium" Type="nvarchar(max)" />
+          <Property Name="Type_Of_User" Type="nvarchar(max)" />
+          <Property Name="Subjects" Type="nvarchar(max)" />
+          <Property Name="Subject1" Type="nvarchar(max)" />
+          <Property Name="Subject2" Type="nvarchar(max)" />
+          <Property Name="Subject3" Type="nvarchar(max)" />
+          <Property Name="Subject4" Type="nvarchar(max)" />
+          <Property Name="Subject5" Type="nvarchar(max)" />
+          <Property Name="EC_Year" Type="nvarchar(max)" />
+          <Property Name="EC_Number" Type="nvarchar(max)" />
+          <Property Name="LastExamYear" Type="nvarchar(max)" />
+          <Property Name="LastExamSeatNo" Type="nvarchar(max)" />
+          <Property Name="Seat_No" Type="nvarchar(max)" />
+          <Property Name="Year_Id" Type="nvarchar(max)" />
+          <Property Name="Ip" Type="nvarchar(max)" />
+          <Property Name="DateNow" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar(max)" />
+          <Property Name="Signature" Type="nvarchar(max)" />
+          <Property Name="Standard" Type="nvarchar(max)" />
+          <Property Name="Division" Type="nvarchar(max)" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_BMM_Center">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="State_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Center_Code" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Tbl_CenterList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="division" Type="nvarchar" MaxLength="255" />
+          <Property Name="div_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="district" Type="nvarchar" MaxLength="255" />
+          <Property Name="taluka" Type="nvarchar" MaxLength="255" />
+          <Property Name="center_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="center_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Medium" Type="nvarchar" MaxLength="255" />
+          <Property Name="active" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Tbl_District">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="District" Type="nvarchar" MaxLength="50" />
+          <Property Name="DivCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tbl_OpenSch_Result">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Form_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="seatnumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile_Number" Type="nvarchar" MaxLength="50" />
+          <Property Name="Division" Type="nvarchar(max)" />
+          <Property Name="Contact_center" Type="nvarchar(max)" />
+          <Property Name="STD" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Sub1" Type="nvarchar(max)" />
+          <Property Name="Marks1" Type="nvarchar(max)" />
+          <Property Name="Sub2" Type="nvarchar(max)" />
+          <Property Name="Marks2" Type="nvarchar(max)" />
+          <Property Name="Sub3" Type="nvarchar(max)" />
+          <Property Name="Marks3" Type="nvarchar(max)" />
+          <Property Name="Sub4" Type="nvarchar(max)" />
+          <Property Name="Marks4" Type="nvarchar(max)" />
+          <Property Name="Sub5" Type="nvarchar(max)" />
+          <Property Name="Marks5" Type="nvarchar(max)" />
+          <Property Name="REMARKS" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Tbl_PageStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pagename" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_payment">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_id" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="tracking_id" Type="nvarchar(max)" />
+          <Property Name="bank_ref_no" Type="nvarchar(max)" />
+          <Property Name="order_status" Type="nvarchar(max)" />
+          <Property Name="failure_message" Type="nvarchar(max)" />
+          <Property Name="payment_mode" Type="nvarchar(max)" />
+          <Property Name="card_name" Type="nvarchar(max)" />
+          <Property Name="status_code" Type="nvarchar(max)" />
+          <Property Name="status_message" Type="nvarchar(max)" />
+          <Property Name="currency" Type="nvarchar(max)" />
+          <Property Name="amount_money" Type="nvarchar(max)" />
+          <Property Name="billing_name" Type="nvarchar(max)" />
+          <Property Name="billing_address" Type="nvarchar(max)" />
+          <Property Name="billing_city" Type="nvarchar(max)" />
+          <Property Name="billing_state" Type="nvarchar(max)" />
+          <Property Name="billing_zip" Type="nvarchar(max)" />
+          <Property Name="billing_country" Type="nvarchar(max)" />
+          <Property Name="billing_tel" Type="nvarchar(max)" />
+          <Property Name="billing_email" Type="nvarchar(max)" />
+          <Property Name="delivery_name" Type="nvarchar(max)" />
+          <Property Name="delivery_address" Type="nvarchar(max)" />
+          <Property Name="delivery_city" Type="nvarchar(max)" />
+          <Property Name="delivery_state" Type="nvarchar(max)" />
+          <Property Name="delivery_zip" Type="nvarchar(max)" />
+          <Property Name="delivery_country" Type="nvarchar(max)" />
+          <Property Name="delivery_tel" Type="nvarchar(max)" />
+          <Property Name="merchant_param1" Type="nvarchar(max)" />
+          <Property Name="merchant_param2" Type="nvarchar(max)" />
+          <Property Name="merchant_param3" Type="nvarchar(max)" />
+          <Property Name="merchant_param4" Type="nvarchar(max)" />
+          <Property Name="merchant_param5" Type="nvarchar(max)" />
+          <Property Name="vault" Type="nvarchar(max)" />
+          <Property Name="offer_type" Type="nvarchar(max)" />
+          <Property Name="offer_code" Type="nvarchar(max)" />
+          <Property Name="discount_value" Type="nvarchar(max)" />
+          <Property Name="mer_account" Type="nvarchar(max)" />
+          <Property Name="eci_value" Type="nvarchar(max)" />
+          <Property Name="retry" Type="nvarchar(max)" />
+          <Property Name="response_code" Type="nvarchar(max)" />
+          <Property Name="billing_notes" Type="nvarchar(max)" />
+          <Property Name="trans_date" Type="nvarchar(max)" />
+          <Property Name="bin_country" Type="nvarchar(max)" />
+          <Property Name="active" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Payment_Error">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="pgRespCode" Type="nvarchar(max)" />
+          <Property Name="PGTxnNo" Type="nvarchar(max)" />
+          <Property Name="SabPaisaTxId" Type="nvarchar(max)" />
+          <Property Name="issuerRefNo" Type="nvarchar(max)" />
+          <Property Name="authIdCode" Type="nvarchar(max)" />
+          <Property Name="amount" Type="nvarchar(max)" />
+          <Property Name="clientTxnId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar(max)" />
+          <Property Name="lastName" Type="nvarchar(max)" />
+          <Property Name="payMode" Type="nvarchar(max)" />
+          <Property Name="email" Type="nvarchar(max)" />
+          <Property Name="mobileNo" Type="nvarchar(max)" />
+          <Property Name="spRespCode" Type="nvarchar(max)" />
+          <Property Name="cid" Type="nvarchar(max)" />
+          <Property Name="bid" Type="nvarchar(max)" />
+          <Property Name="clientCode" Type="nvarchar(max)" />
+          <Property Name="payeeProfile" Type="nvarchar(max)" />
+          <Property Name="transDate" Type="nvarchar(max)" />
+          <Property Name="spRespStatus" Type="nvarchar(max)" />
+          <Property Name="m3" Type="nvarchar(max)" />
+          <Property Name="challanNo" Type="nvarchar(max)" />
+          <Property Name="reMsg" Type="nvarchar(max)" />
+          <Property Name="orgTxnAmount" Type="nvarchar(max)" />
+          <Property Name="programId" Type="nvarchar(max)" />
+          <Property Name="midName" Type="nvarchar(max)" />
+          <Property Name="Add" Type="nvarchar(max)" />
+          <Property Name="param1" Type="nvarchar(max)" />
+          <Property Name="param2" Type="nvarchar(max)" />
+          <Property Name="param3" Type="nvarchar(max)" />
+          <Property Name="param4" Type="nvarchar(max)" />
+          <Property Name="udf5" Type="nvarchar(max)" />
+          <Property Name="udf6" Type="nvarchar(max)" />
+          <Property Name="udf7" Type="nvarchar(max)" />
+          <Property Name="udf8" Type="nvarchar(max)" />
+          <Property Name="udf9" Type="nvarchar(max)" />
+          <Property Name="udf10" Type="nvarchar(max)" />
+          <Property Name="udf11" Type="nvarchar(max)" />
+          <Property Name="udf12" Type="nvarchar(max)" />
+          <Property Name="udf13" Type="nvarchar(max)" />
+          <Property Name="udf14" Type="nvarchar(max)" />
+          <Property Name="udf15" Type="nvarchar(max)" />
+          <Property Name="udf16" Type="nvarchar(max)" />
+          <Property Name="udf17" Type="nvarchar(max)" />
+          <Property Name="udf18" Type="nvarchar(max)" />
+          <Property Name="udf19" Type="nvarchar(max)" />
+          <Property Name="udf20" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Tbl_Registration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Id" Type="nvarchar(max)" />
+          <Property Name="UID" Type="nvarchar(max)" />
+          <Property Name="Enrollment_No" Type="nvarchar(max)" />
+          <Property Name="ApplicationId" Type="nvarchar(max)" />
+          <Property Name="Seat_No" Type="nvarchar(max)" />
+          <Property Name="First_Name" Type="nvarchar(max)" />
+          <Property Name="Middle_Name" Type="nvarchar(max)" />
+          <Property Name="Last_Name" Type="nvarchar(max)" />
+          <Property Name="Mother_Name" Type="nvarchar(max)" />
+          <Property Name="Adhar_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Village" Type="nvarchar(max)" />
+          <Property Name="District" Type="nvarchar(max)" />
+          <Property Name="Taluka" Type="nvarchar(max)" />
+          <Property Name="State" Type="nvarchar(max)" />
+          <Property Name="Pin_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date_of_Birth" Type="nvarchar(max)" />
+          <Property Name="DOB_Words" Type="nvarchar(max)" />
+          <Property Name="DOB_Village" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB_Taluka" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB_District" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Standard" Type="nvarchar(max)" />
+          <Property Name="Medium" Type="nvarchar(max)" />
+          <Property Name="Age_Certified_Proof" Type="nvarchar(max)" />
+          <Property Name="District_Center" Type="nvarchar" MaxLength="50" />
+          <Property Name="Taluka_Center" Type="nvarchar" MaxLength="50" />
+          <Property Name="Center" Type="nvarchar(max)" />
+          <Property Name="Center_Code" Type="nvarchar(max)" />
+          <Property Name="Previous_Attend_School_YN" Type="nvarchar(max)" />
+          <Property Name="Self_Declaration_Not_Gone_School" Type="nvarchar(max)" />
+          <Property Name="Previous_Attend_School" Type="nvarchar(max)" />
+          <Property Name="Date_Of_Leaving_Last_Attended_School" Type="nvarchar(max)" />
+          <Property Name="Handicap" Type="nvarchar(max)" />
+          <Property Name="Candidate_Handicaped_YN" Type="nvarchar(max)" />
+          <Property Name="Subject_List" Type="nvarchar(max)" />
+          <Property Name="Subject1" Type="nvarchar(max)" />
+          <Property Name="Subject2" Type="nvarchar(max)" />
+          <Property Name="Subject3" Type="nvarchar(max)" />
+          <Property Name="Subject4" Type="nvarchar(max)" />
+          <Property Name="Subject5" Type="nvarchar(max)" />
+          <Property Name="Minority_Religion" Type="nvarchar(max)" />
+          <Property Name="Exam_Form_Disable" Type="nvarchar(max)" />
+          <Property Name="Type_Of_User" Type="nvarchar(max)" />
+          <Property Name="Nsqf_Subject" Type="nvarchar(max)" />
+          <Property Name="Hall_Ticket" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Signature" Type="nvarchar(max)" />
+          <Property Name="Payment_Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ec_Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ref_ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="order_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="ip" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateNow" Type="datetime" />
+          <Property Name="Year_Id" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="Foreign_State" Type="nvarchar(max)" />
+          <Property Name="BMM_Center" Type="nvarchar(max)" />
+          <Property Name="Regular_school_Name" Type="nvarchar(max)" />
+          <Property Name="School_Address" Type="nvarchar(max)" />
+          <Property Name="Disability_Doc_Proof" Type="nvarchar(max)" />
+          <Property Name="DOB_Place_Address" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Tbl_result">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Form_No" Type="nvarchar(max)" />
+          <Property Name="seatnumber" Type="nvarchar(max)" />
+          <Property Name="STD" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Sub1" Type="nvarchar(max)" />
+          <Property Name="Marks1" Type="nvarchar(max)" />
+          <Property Name="Sub2" Type="nvarchar(max)" />
+          <Property Name="Marks2" Type="nvarchar(max)" />
+          <Property Name="Sub3" Type="nvarchar(max)" />
+          <Property Name="Marks3" Type="nvarchar(max)" />
+          <Property Name="Sub4" Type="nvarchar(max)" />
+          <Property Name="Marks4" Type="nvarchar(max)" />
+          <Property Name="Sub5" Type="nvarchar(max)" />
+          <Property Name="Marks5" Type="nvarchar(max)" />
+          <Property Name="REMARKS" Type="nvarchar(max)" />
+          <Property Name="Mother_Name" Type="nvarchar(max)" />
+          <Property Name="Division" Type="nvarchar(max)" />
+          <Property Name="Contact_center" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Tbl_Site_Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PageName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Subject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject_Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Subject_Name" Type="nvarchar(max)" />
+          <Property Name="Subject_Group" Type="nvarchar" MaxLength="50" />
+          <Property Name="Handicaped" Type="nvarchar" MaxLength="50" />
+          <Property Name="Class" Type="nvarchar" MaxLength="50" />
+          <Property Name="sample2" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="Open_Schooling_2025ModelStoreContainer">
+          <EntitySet Name="All_Taluka" EntityType="Self.All_Taluka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Center_Login_Information" EntityType="Self.Center_Login_Information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Admin" EntityType="Self.Tbl_Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Application_Form" EntityType="Self.Tbl_Application_Form" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_BMM_Center" EntityType="Self.Tbl_BMM_Center" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_CenterList" EntityType="Self.Tbl_CenterList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_District" EntityType="Self.Tbl_District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_OpenSch_Result" EntityType="Self.Tbl_OpenSch_Result" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_PageStatus" EntityType="Self.Tbl_PageStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_payment" EntityType="Self.Tbl_payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Payment_Error" EntityType="Self.Tbl_Payment_Error" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Registration" EntityType="Self.Tbl_Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_result" EntityType="Self.Tbl_result" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Site_Status" EntityType="Self.Tbl_Site_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Subject" EntityType="Self.Tbl_Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_AF_Backup" EntityType="Self.Tbl_AF_Backup" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tbl_AF_Backup].[Form_No] AS [Form_No], 
+    [Tbl_AF_Backup].[UDISE_No] AS [UDISE_No], 
+    [Tbl_AF_Backup].[Contact_center] AS [Contact_center], 
+    [Tbl_AF_Backup].[Last_name] AS [Last_name], 
+    [Tbl_AF_Backup].[Name] AS [Name], 
+    [Tbl_AF_Backup].[Middle_name] AS [Middle_name], 
+    [Tbl_AF_Backup].[Mother_name] AS [Mother_name], 
+    [Tbl_AF_Backup].[Address] AS [Address], 
+    [Tbl_AF_Backup].[Pincode] AS [Pincode], 
+    [Tbl_AF_Backup].[Mobile_no] AS [Mobile_no], 
+    [Tbl_AF_Backup].[Place_of_birth] AS [Place_of_birth], 
+    [Tbl_AF_Backup].[Date_of_birth] AS [Date_of_birth], 
+    [Tbl_AF_Backup].[Adhar_no] AS [Adhar_no], 
+    [Tbl_AF_Backup].[Gender] AS [Gender], 
+    [Tbl_AF_Backup].[Minority_Religion] AS [Minority_Religion], 
+    [Tbl_AF_Backup].[Category] AS [Category], 
+    [Tbl_AF_Backup].[Divyang] AS [Divyang], 
+    [Tbl_AF_Backup].[Medium] AS [Medium], 
+    [Tbl_AF_Backup].[Type_Of_User] AS [Type_Of_User], 
+    [Tbl_AF_Backup].[Subjects] AS [Subjects], 
+    [Tbl_AF_Backup].[Subject1] AS [Subject1], 
+    [Tbl_AF_Backup].[Subject2] AS [Subject2], 
+    [Tbl_AF_Backup].[Subject3] AS [Subject3], 
+    [Tbl_AF_Backup].[Subject4] AS [Subject4], 
+    [Tbl_AF_Backup].[Subject5] AS [Subject5], 
+    [Tbl_AF_Backup].[EC_Year] AS [EC_Year], 
+    [Tbl_AF_Backup].[EC_Number] AS [EC_Number], 
+    [Tbl_AF_Backup].[LastExamYear] AS [LastExamYear], 
+    [Tbl_AF_Backup].[LastExamSeatNo] AS [LastExamSeatNo], 
+    [Tbl_AF_Backup].[Seat_No] AS [Seat_No], 
+    [Tbl_AF_Backup].[Year_Id] AS [Year_Id], 
+    [Tbl_AF_Backup].[Ip] AS [Ip], 
+    [Tbl_AF_Backup].[DateNow] AS [DateNow], 
+    [Tbl_AF_Backup].[Photo] AS [Photo], 
+    [Tbl_AF_Backup].[Signature] AS [Signature], 
+    [Tbl_AF_Backup].[Id] AS [Id]
+    FROM [dbo].[Tbl_AF_Backup] AS [Tbl_AF_Backup]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Tbl_Application_Form_bk" EntityType="Self.Tbl_Application_Form_bk" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tbl_Application_Form_bk].[Form_No] AS [Form_No], 
+    [Tbl_Application_Form_bk].[UDISE_No] AS [UDISE_No], 
+    [Tbl_Application_Form_bk].[Contact_center] AS [Contact_center], 
+    [Tbl_Application_Form_bk].[Last_name] AS [Last_name], 
+    [Tbl_Application_Form_bk].[Name] AS [Name], 
+    [Tbl_Application_Form_bk].[Middle_name] AS [Middle_name], 
+    [Tbl_Application_Form_bk].[Mother_name] AS [Mother_name], 
+    [Tbl_Application_Form_bk].[Address] AS [Address], 
+    [Tbl_Application_Form_bk].[Pincode] AS [Pincode], 
+    [Tbl_Application_Form_bk].[Mobile_no] AS [Mobile_no], 
+    [Tbl_Application_Form_bk].[Place_of_birth] AS [Place_of_birth], 
+    [Tbl_Application_Form_bk].[Date_of_birth] AS [Date_of_birth], 
+    [Tbl_Application_Form_bk].[Adhar_no] AS [Adhar_no], 
+    [Tbl_Application_Form_bk].[Gender] AS [Gender], 
+    [Tbl_Application_Form_bk].[Minority_Religion] AS [Minority_Religion], 
+    [Tbl_Application_Form_bk].[Category] AS [Category], 
+    [Tbl_Application_Form_bk].[Divyang] AS [Divyang], 
+    [Tbl_Application_Form_bk].[Medium] AS [Medium], 
+    [Tbl_Application_Form_bk].[Type_Of_User] AS [Type_Of_User], 
+    [Tbl_Application_Form_bk].[Subjects] AS [Subjects], 
+    [Tbl_Application_Form_bk].[Subject1] AS [Subject1], 
+    [Tbl_Application_Form_bk].[Subject2] AS [Subject2], 
+    [Tbl_Application_Form_bk].[Subject3] AS [Subject3], 
+    [Tbl_Application_Form_bk].[Subject4] AS [Subject4], 
+    [Tbl_Application_Form_bk].[Subject5] AS [Subject5], 
+    [Tbl_Application_Form_bk].[EC_Year] AS [EC_Year], 
+    [Tbl_Application_Form_bk].[EC_Number] AS [EC_Number], 
+    [Tbl_Application_Form_bk].[LastExamYear] AS [LastExamYear], 
+    [Tbl_Application_Form_bk].[LastExamSeatNo] AS [LastExamSeatNo], 
+    [Tbl_Application_Form_bk].[Seat_No] AS [Seat_No], 
+    [Tbl_Application_Form_bk].[Year_Id] AS [Year_Id], 
+    [Tbl_Application_Form_bk].[Ip] AS [Ip], 
+    [Tbl_Application_Form_bk].[DateNow] AS [DateNow], 
+    [Tbl_Application_Form_bk].[Photo] AS [Photo], 
+    [Tbl_Application_Form_bk].[Signature] AS [Signature], 
+    [Tbl_Application_Form_bk].[Id] AS [Id]
+    FROM [dbo].[Tbl_Application_Form_bk] AS [Tbl_Application_Form_bk]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Tbl_Application_Form_Hallticket_bk" EntityType="Self.Tbl_Application_Form_Hallticket_bk" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tbl_Application_Form_Hallticket_bk].[Form_No] AS [Form_No], 
+    [Tbl_Application_Form_Hallticket_bk].[UDISE_No] AS [UDISE_No], 
+    [Tbl_Application_Form_Hallticket_bk].[Contact_center] AS [Contact_center], 
+    [Tbl_Application_Form_Hallticket_bk].[Last_name] AS [Last_name], 
+    [Tbl_Application_Form_Hallticket_bk].[Name] AS [Name], 
+    [Tbl_Application_Form_Hallticket_bk].[Middle_name] AS [Middle_name], 
+    [Tbl_Application_Form_Hallticket_bk].[Mother_name] AS [Mother_name], 
+    [Tbl_Application_Form_Hallticket_bk].[Address] AS [Address], 
+    [Tbl_Application_Form_Hallticket_bk].[Pincode] AS [Pincode], 
+    [Tbl_Application_Form_Hallticket_bk].[Mobile_no] AS [Mobile_no], 
+    [Tbl_Application_Form_Hallticket_bk].[Place_of_birth] AS [Place_of_birth], 
+    [Tbl_Application_Form_Hallticket_bk].[Date_of_birth] AS [Date_of_birth], 
+    [Tbl_Application_Form_Hallticket_bk].[Adhar_no] AS [Adhar_no], 
+    [Tbl_Application_Form_Hallticket_bk].[Gender] AS [Gender], 
+    [Tbl_Application_Form_Hallticket_bk].[Minority_Religion] AS [Minority_Religion], 
+    [Tbl_Application_Form_Hallticket_bk].[Category] AS [Category], 
+    [Tbl_Application_Form_Hallticket_bk].[Divyang] AS [Divyang], 
+    [Tbl_Application_Form_Hallticket_bk].[Medium] AS [Medium], 
+    [Tbl_Application_Form_Hallticket_bk].[Type_Of_User] AS [Type_Of_User], 
+    [Tbl_Application_Form_Hallticket_bk].[Subjects] AS [Subjects], 
+    [Tbl_Application_Form_Hallticket_bk].[Subject1] AS [Subject1], 
+    [Tbl_Application_Form_Hallticket_bk].[Subject2] AS [Subject2], 
+    [Tbl_Application_Form_Hallticket_bk].[Subject3] AS [Subject3], 
+    [Tbl_Application_Form_Hallticket_bk].[Subject4] AS [Subject4], 
+    [Tbl_Application_Form_Hallticket_bk].[Subject5] AS [Subject5], 
+    [Tbl_Application_Form_Hallticket_bk].[EC_Year] AS [EC_Year], 
+    [Tbl_Application_Form_Hallticket_bk].[EC_Number] AS [EC_Number], 
+    [Tbl_Application_Form_Hallticket_bk].[LastExamYear] AS [LastExamYear], 
+    [Tbl_Application_Form_Hallticket_bk].[LastExamSeatNo] AS [LastExamSeatNo], 
+    [Tbl_Application_Form_Hallticket_bk].[Seat_No] AS [Seat_No], 
+    [Tbl_Application_Form_Hallticket_bk].[Year_Id] AS [Year_Id], 
+    [Tbl_Application_Form_Hallticket_bk].[Ip] AS [Ip], 
+    [Tbl_Application_Form_Hallticket_bk].[DateNow] AS [DateNow], 
+    [Tbl_Application_Form_Hallticket_bk].[Photo] AS [Photo], 
+    [Tbl_Application_Form_Hallticket_bk].[Signature] AS [Signature], 
+    [Tbl_Application_Form_Hallticket_bk].[Standard] AS [Standard], 
+    [Tbl_Application_Form_Hallticket_bk].[Division] AS [Division], 
+    [Tbl_Application_Form_Hallticket_bk].[Id] AS [Id]
+    FROM [dbo].[Tbl_Application_Form_Hallticket_bk] AS [Tbl_Application_Form_Hallticket_bk]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Open_Schooling_2025Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="All_Taluka">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Taluka" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="District" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Division" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Center_Login_Information">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UDISE_No" Type="Double" />
+          <Property Name="Center_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Division" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Div_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Taluka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact_Center_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Center_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="Double" />
+          <Property Name="Medium" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="District_Code" Type="Int32" />
+          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="State_Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MsgStatus" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Application_Form">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Form_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UDISE_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Contact_center" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Last_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Middle_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mother_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Pincode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Place_of_birth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_of_birth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adhar_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Minority_Religion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Divyang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Medium" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type_Of_User" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subjects" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EC_Year" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EC_Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastExamYear" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastExamSeatNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Seat_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Year_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateNow" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Signature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Standard" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Division" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Tbl_BMM_Center">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Center_Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_CenterList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="division" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="div_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="district" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="taluka" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="center_code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="center_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Medium" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="active" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_District">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DivCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_OpenSch_Result">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Form_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="seatnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Division" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Contact_center" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sub1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Marks1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sub2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Marks2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sub3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Marks3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sub4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Marks4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sub5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Marks5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="REMARKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_PageStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pagename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_payment">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tracking_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bank_ref_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="order_status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="failure_message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="payment_mode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="card_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status_code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="status_message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="currency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="amount_money" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="billing_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="billing_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="billing_city" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="billing_state" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="billing_zip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="billing_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="billing_tel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="billing_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="delivery_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="delivery_address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="delivery_city" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="delivery_state" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="delivery_zip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="delivery_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="delivery_tel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="merchant_param1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="merchant_param2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="merchant_param3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="merchant_param4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="merchant_param5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="vault" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="offer_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="offer_code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="discount_value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mer_account" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eci_value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="retry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="response_code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="billing_notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="trans_date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bin_country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="active" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Payment_Error">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="pgRespCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PGTxnNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SabPaisaTxId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="issuerRefNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="authIdCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="amount" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="clientTxnId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="lastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="payMode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mobileNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="spRespCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="bid" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="clientCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="payeeProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="transDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="spRespStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="m3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="challanNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="reMsg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="orgTxnAmount" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="programId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="midName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Add" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="param1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="param2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="param3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="param4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="udf5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="udf6" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="udf7" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="udf8" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="udf9" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="udf10" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="udf11" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="udf12" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="udf13" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="udf14" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="udf15" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="udf16" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="udf17" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="udf18" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="udf19" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="udf20" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_Registration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Enrollment_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Seat_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="First_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Middle_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mother_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adhar_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Village" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="District" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Taluka" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Pin_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date_of_Birth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DOB_Words" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DOB_Village" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB_Taluka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB_District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Standard" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Medium" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Age_Certified_Proof" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="District_Center" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Taluka_Center" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Center" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Center_Code" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Previous_Attend_School_YN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Self_Declaration_Not_Gone_School" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Previous_Attend_School" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_Of_Leaving_Last_Attended_School" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Handicap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Candidate_Handicaped_YN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject_List" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Minority_Religion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Exam_Form_Disable" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type_Of_User" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Nsqf_Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Hall_Ticket" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Signature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Payment_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ec_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ref_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="order_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateNow" Type="DateTime" Precision="3" />
+          <Property Name="Year_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Foreign_State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BMM_Center" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Regular_school_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="School_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Disability_Doc_Proof" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DOB_Place_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_result">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Form_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="seatnumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sub1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Marks1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sub2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Marks2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sub3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Marks3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sub4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Marks4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sub5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Marks5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="REMARKS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mother_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Division" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Contact_center" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_Site_Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Subject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Subject_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject_Group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Handicaped" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sample2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_AF_Backup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Form_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UDISE_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Contact_center" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Last_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Middle_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mother_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Pincode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Place_of_birth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_of_birth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adhar_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Minority_Religion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Divyang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Medium" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type_Of_User" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subjects" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EC_Year" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EC_Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastExamYear" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastExamSeatNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Seat_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Year_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateNow" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Signature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Tbl_Application_Form_bk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Form_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UDISE_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Contact_center" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Last_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Middle_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mother_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Pincode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Place_of_birth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_of_birth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adhar_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Minority_Religion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Divyang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Medium" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type_Of_User" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subjects" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EC_Year" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EC_Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastExamYear" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastExamSeatNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Seat_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Year_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateNow" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Signature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Tbl_Application_Form_Hallticket_bk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Form_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UDISE_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Contact_center" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Last_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Middle_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mother_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Pincode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Place_of_birth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date_of_birth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adhar_no" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Minority_Religion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Divyang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Medium" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type_Of_User" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subjects" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EC_Year" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EC_Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastExamYear" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastExamSeatNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Seat_No" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Year_Id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateNow" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Signature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Standard" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Division" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityContainer Name="Open_Schooling_2025Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="All_Taluka" EntityType="Self.All_Taluka" />
+          <EntitySet Name="Center_Login_Information" EntityType="Self.Center_Login_Information" />
+          <EntitySet Name="Tbl_Admin" EntityType="Self.Tbl_Admin" />
+          <EntitySet Name="Tbl_Application_Form" EntityType="Self.Tbl_Application_Form" />
+          <EntitySet Name="Tbl_BMM_Center" EntityType="Self.Tbl_BMM_Center" />
+          <EntitySet Name="Tbl_CenterList" EntityType="Self.Tbl_CenterList" />
+          <EntitySet Name="Tbl_District" EntityType="Self.Tbl_District" />
+          <EntitySet Name="Tbl_OpenSch_Result" EntityType="Self.Tbl_OpenSch_Result" />
+          <EntitySet Name="Tbl_PageStatus" EntityType="Self.Tbl_PageStatus" />
+          <EntitySet Name="Tbl_payment" EntityType="Self.Tbl_payment" />
+          <EntitySet Name="Tbl_Payment_Error" EntityType="Self.Tbl_Payment_Error" />
+          <EntitySet Name="Tbl_Registration" EntityType="Self.Tbl_Registration" />
+          <EntitySet Name="Tbl_result" EntityType="Self.Tbl_result" />
+          <EntitySet Name="Tbl_Site_Status" EntityType="Self.Tbl_Site_Status" />
+          <EntitySet Name="Tbl_Subject" EntityType="Self.Tbl_Subject" />
+          <EntitySet Name="Tbl_AF_Backup" EntityType="Self.Tbl_AF_Backup" />
+          <EntitySet Name="Tbl_Application_Form_bk" EntityType="Self.Tbl_Application_Form_bk" />
+          <EntitySet Name="Tbl_Application_Form_Hallticket_bk" EntityType="Self.Tbl_Application_Form_Hallticket_bk" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Open_Schooling_2025ModelStoreContainer" CdmEntityContainer="Open_Schooling_2025Entities">
+          <EntitySetMapping Name="All_Taluka">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.All_Taluka">
+              <MappingFragment StoreEntitySet="All_Taluka">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Taluka" ColumnName="Taluka" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Center_Login_Information">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Center_Login_Information">
+              <MappingFragment StoreEntitySet="Center_Login_Information">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UDISE_No" ColumnName="UDISE_No" />
+                <ScalarProperty Name="Center_Password" ColumnName="Center_Password" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Div_Code" ColumnName="Div_Code" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Taluka" ColumnName="Taluka" />
+                <ScalarProperty Name="Contact_Center_Code" ColumnName="Contact_Center_Code" />
+                <ScalarProperty Name="Center_Name" ColumnName="Center_Name" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Medium" ColumnName="Medium" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="District_Code" ColumnName="District_Code" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State_Code" ColumnName="State_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Admin">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Tbl_Admin">
+              <MappingFragment StoreEntitySet="Tbl_Admin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="MsgStatus" ColumnName="MsgStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Application_Form">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Tbl_Application_Form">
+              <MappingFragment StoreEntitySet="Tbl_Application_Form">
+                <ScalarProperty Name="Form_No" ColumnName="Form_No" />
+                <ScalarProperty Name="UDISE_No" ColumnName="UDISE_No" />
+                <ScalarProperty Name="Contact_center" ColumnName="Contact_center" />
+                <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Middle_name" ColumnName="Middle_name" />
+                <ScalarProperty Name="Mother_name" ColumnName="Mother_name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="Mobile_no" ColumnName="Mobile_no" />
+                <ScalarProperty Name="Place_of_birth" ColumnName="Place_of_birth" />
+                <ScalarProperty Name="Date_of_birth" ColumnName="Date_of_birth" />
+                <ScalarProperty Name="Adhar_no" ColumnName="Adhar_no" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Minority_Religion" ColumnName="Minority_Religion" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Divyang" ColumnName="Divyang" />
+                <ScalarProperty Name="Medium" ColumnName="Medium" />
+                <ScalarProperty Name="Type_Of_User" ColumnName="Type_Of_User" />
+                <ScalarProperty Name="Subjects" ColumnName="Subjects" />
+                <ScalarProperty Name="Subject1" ColumnName="Subject1" />
+                <ScalarProperty Name="Subject2" ColumnName="Subject2" />
+                <ScalarProperty Name="Subject3" ColumnName="Subject3" />
+                <ScalarProperty Name="Subject4" ColumnName="Subject4" />
+                <ScalarProperty Name="Subject5" ColumnName="Subject5" />
+                <ScalarProperty Name="EC_Year" ColumnName="EC_Year" />
+                <ScalarProperty Name="EC_Number" ColumnName="EC_Number" />
+                <ScalarProperty Name="LastExamYear" ColumnName="LastExamYear" />
+                <ScalarProperty Name="LastExamSeatNo" ColumnName="LastExamSeatNo" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+                <ScalarProperty Name="Year_Id" ColumnName="Year_Id" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="DateNow" ColumnName="DateNow" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="Standard" ColumnName="Standard" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_BMM_Center">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Tbl_BMM_Center">
+              <MappingFragment StoreEntitySet="Tbl_BMM_Center">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="State_Code" ColumnName="State_Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Center_Code" ColumnName="Center_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_CenterList">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Tbl_CenterList">
+              <MappingFragment StoreEntitySet="Tbl_CenterList">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="division" ColumnName="division" />
+                <ScalarProperty Name="div_code" ColumnName="div_code" />
+                <ScalarProperty Name="district" ColumnName="district" />
+                <ScalarProperty Name="taluka" ColumnName="taluka" />
+                <ScalarProperty Name="center_code" ColumnName="center_code" />
+                <ScalarProperty Name="center_name" ColumnName="center_name" />
+                <ScalarProperty Name="Medium" ColumnName="Medium" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_District">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Tbl_District">
+              <MappingFragment StoreEntitySet="Tbl_District">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="DivCode" ColumnName="DivCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_OpenSch_Result">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Tbl_OpenSch_Result">
+              <MappingFragment StoreEntitySet="Tbl_OpenSch_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Form_No" ColumnName="Form_No" />
+                <ScalarProperty Name="seatnumber" ColumnName="seatnumber" />
+                <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Contact_center" ColumnName="Contact_center" />
+                <ScalarProperty Name="STD" ColumnName="STD" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sub1" ColumnName="Sub1" />
+                <ScalarProperty Name="Marks1" ColumnName="Marks1" />
+                <ScalarProperty Name="Sub2" ColumnName="Sub2" />
+                <ScalarProperty Name="Marks2" ColumnName="Marks2" />
+                <ScalarProperty Name="Sub3" ColumnName="Sub3" />
+                <ScalarProperty Name="Marks3" ColumnName="Marks3" />
+                <ScalarProperty Name="Sub4" ColumnName="Sub4" />
+                <ScalarProperty Name="Marks4" ColumnName="Marks4" />
+                <ScalarProperty Name="Sub5" ColumnName="Sub5" />
+                <ScalarProperty Name="Marks5" ColumnName="Marks5" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_PageStatus">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Tbl_PageStatus">
+              <MappingFragment StoreEntitySet="Tbl_PageStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Pagename" ColumnName="Pagename" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_payment">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Tbl_payment">
+              <MappingFragment StoreEntitySet="Tbl_payment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="tracking_id" ColumnName="tracking_id" />
+                <ScalarProperty Name="bank_ref_no" ColumnName="bank_ref_no" />
+                <ScalarProperty Name="order_status" ColumnName="order_status" />
+                <ScalarProperty Name="failure_message" ColumnName="failure_message" />
+                <ScalarProperty Name="payment_mode" ColumnName="payment_mode" />
+                <ScalarProperty Name="card_name" ColumnName="card_name" />
+                <ScalarProperty Name="status_code" ColumnName="status_code" />
+                <ScalarProperty Name="status_message" ColumnName="status_message" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="amount_money" ColumnName="amount_money" />
+                <ScalarProperty Name="billing_name" ColumnName="billing_name" />
+                <ScalarProperty Name="billing_address" ColumnName="billing_address" />
+                <ScalarProperty Name="billing_city" ColumnName="billing_city" />
+                <ScalarProperty Name="billing_state" ColumnName="billing_state" />
+                <ScalarProperty Name="billing_zip" ColumnName="billing_zip" />
+                <ScalarProperty Name="billing_country" ColumnName="billing_country" />
+                <ScalarProperty Name="billing_tel" ColumnName="billing_tel" />
+                <ScalarProperty Name="billing_email" ColumnName="billing_email" />
+                <ScalarProperty Name="delivery_name" ColumnName="delivery_name" />
+                <ScalarProperty Name="delivery_address" ColumnName="delivery_address" />
+                <ScalarProperty Name="delivery_city" ColumnName="delivery_city" />
+                <ScalarProperty Name="delivery_state" ColumnName="delivery_state" />
+                <ScalarProperty Name="delivery_zip" ColumnName="delivery_zip" />
+                <ScalarProperty Name="delivery_country" ColumnName="delivery_country" />
+                <ScalarProperty Name="delivery_tel" ColumnName="delivery_tel" />
+                <ScalarProperty Name="merchant_param1" ColumnName="merchant_param1" />
+                <ScalarProperty Name="merchant_param2" ColumnName="merchant_param2" />
+                <ScalarProperty Name="merchant_param3" ColumnName="merchant_param3" />
+                <ScalarProperty Name="merchant_param4" ColumnName="merchant_param4" />
+                <ScalarProperty Name="merchant_param5" ColumnName="merchant_param5" />
+                <ScalarProperty Name="vault" ColumnName="vault" />
+                <ScalarProperty Name="offer_type" ColumnName="offer_type" />
+                <ScalarProperty Name="offer_code" ColumnName="offer_code" />
+                <ScalarProperty Name="discount_value" ColumnName="discount_value" />
+                <ScalarProperty Name="mer_account" ColumnName="mer_account" />
+                <ScalarProperty Name="eci_value" ColumnName="eci_value" />
+                <ScalarProperty Name="retry" ColumnName="retry" />
+                <ScalarProperty Name="response_code" ColumnName="response_code" />
+                <ScalarProperty Name="billing_notes" ColumnName="billing_notes" />
+                <ScalarProperty Name="trans_date" ColumnName="trans_date" />
+                <ScalarProperty Name="bin_country" ColumnName="bin_country" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Payment_Error">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Tbl_Payment_Error">
+              <MappingFragment StoreEntitySet="Tbl_Payment_Error">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="pgRespCode" ColumnName="pgRespCode" />
+                <ScalarProperty Name="PGTxnNo" ColumnName="PGTxnNo" />
+                <ScalarProperty Name="SabPaisaTxId" ColumnName="SabPaisaTxId" />
+                <ScalarProperty Name="issuerRefNo" ColumnName="issuerRefNo" />
+                <ScalarProperty Name="authIdCode" ColumnName="authIdCode" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="clientTxnId" ColumnName="clientTxnId" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="payMode" ColumnName="payMode" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="mobileNo" ColumnName="mobileNo" />
+                <ScalarProperty Name="spRespCode" ColumnName="spRespCode" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="bid" ColumnName="bid" />
+                <ScalarProperty Name="clientCode" ColumnName="clientCode" />
+                <ScalarProperty Name="payeeProfile" ColumnName="payeeProfile" />
+                <ScalarProperty Name="transDate" ColumnName="transDate" />
+                <ScalarProperty Name="spRespStatus" ColumnName="spRespStatus" />
+                <ScalarProperty Name="m3" ColumnName="m3" />
+                <ScalarProperty Name="challanNo" ColumnName="challanNo" />
+                <ScalarProperty Name="reMsg" ColumnName="reMsg" />
+                <ScalarProperty Name="orgTxnAmount" ColumnName="orgTxnAmount" />
+                <ScalarProperty Name="programId" ColumnName="programId" />
+                <ScalarProperty Name="midName" ColumnName="midName" />
+                <ScalarProperty Name="Add" ColumnName="Add" />
+                <ScalarProperty Name="param1" ColumnName="param1" />
+                <ScalarProperty Name="param2" ColumnName="param2" />
+                <ScalarProperty Name="param3" ColumnName="param3" />
+                <ScalarProperty Name="param4" ColumnName="param4" />
+                <ScalarProperty Name="udf5" ColumnName="udf5" />
+                <ScalarProperty Name="udf6" ColumnName="udf6" />
+                <ScalarProperty Name="udf7" ColumnName="udf7" />
+                <ScalarProperty Name="udf8" ColumnName="udf8" />
+                <ScalarProperty Name="udf9" ColumnName="udf9" />
+                <ScalarProperty Name="udf10" ColumnName="udf10" />
+                <ScalarProperty Name="udf11" ColumnName="udf11" />
+                <ScalarProperty Name="udf12" ColumnName="udf12" />
+                <ScalarProperty Name="udf13" ColumnName="udf13" />
+                <ScalarProperty Name="udf14" ColumnName="udf14" />
+                <ScalarProperty Name="udf15" ColumnName="udf15" />
+                <ScalarProperty Name="udf16" ColumnName="udf16" />
+                <ScalarProperty Name="udf17" ColumnName="udf17" />
+                <ScalarProperty Name="udf18" ColumnName="udf18" />
+                <ScalarProperty Name="udf19" ColumnName="udf19" />
+                <ScalarProperty Name="udf20" ColumnName="udf20" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Registration">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Tbl_Registration">
+              <MappingFragment StoreEntitySet="Tbl_Registration">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="Enrollment_No" ColumnName="Enrollment_No" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Mother_Name" ColumnName="Mother_Name" />
+                <ScalarProperty Name="Adhar_no" ColumnName="Adhar_no" />
+                <ScalarProperty Name="Mobile_No" ColumnName="Mobile_No" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Village" ColumnName="Village" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Taluka" ColumnName="Taluka" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Pin_Code" ColumnName="Pin_Code" />
+                <ScalarProperty Name="Date_of_Birth" ColumnName="Date_of_Birth" />
+                <ScalarProperty Name="DOB_Words" ColumnName="DOB_Words" />
+                <ScalarProperty Name="DOB_Village" ColumnName="DOB_Village" />
+                <ScalarProperty Name="DOB_Taluka" ColumnName="DOB_Taluka" />
+                <ScalarProperty Name="DOB_District" ColumnName="DOB_District" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Standard" ColumnName="Standard" />
+                <ScalarProperty Name="Medium" ColumnName="Medium" />
+                <ScalarProperty Name="Age_Certified_Proof" ColumnName="Age_Certified_Proof" />
+                <ScalarProperty Name="District_Center" ColumnName="District_Center" />
+                <ScalarProperty Name="Taluka_Center" ColumnName="Taluka_Center" />
+                <ScalarProperty Name="Center" ColumnName="Center" />
+                <ScalarProperty Name="Center_Code" ColumnName="Center_Code" />
+                <ScalarProperty Name="Previous_Attend_School_YN" ColumnName="Previous_Attend_School_YN" />
+                <ScalarProperty Name="Self_Declaration_Not_Gone_School" ColumnName="Self_Declaration_Not_Gone_School" />
+                <ScalarProperty Name="Previous_Attend_School" ColumnName="Previous_Attend_School" />
+                <ScalarProperty Name="Date_Of_Leaving_Last_Attended_School" ColumnName="Date_Of_Leaving_Last_Attended_School" />
+                <ScalarProperty Name="Handicap" ColumnName="Handicap" />
+                <ScalarProperty Name="Candidate_Handicaped_YN" ColumnName="Candidate_Handicaped_YN" />
+                <ScalarProperty Name="Subject_List" ColumnName="Subject_List" />
+                <ScalarProperty Name="Subject1" ColumnName="Subject1" />
+                <ScalarProperty Name="Subject2" ColumnName="Subject2" />
+                <ScalarProperty Name="Subject3" ColumnName="Subject3" />
+                <ScalarProperty Name="Subject4" ColumnName="Subject4" />
+                <ScalarProperty Name="Subject5" ColumnName="Subject5" />
+                <ScalarProperty Name="Minority_Religion" ColumnName="Minority_Religion" />
+                <ScalarProperty Name="Exam_Form_Disable" ColumnName="Exam_Form_Disable" />
+                <ScalarProperty Name="Type_Of_User" ColumnName="Type_Of_User" />
+                <ScalarProperty Name="Nsqf_Subject" ColumnName="Nsqf_Subject" />
+                <ScalarProperty Name="Hall_Ticket" ColumnName="Hall_Ticket" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="Payment_Status" ColumnName="Payment_Status" />
+                <ScalarProperty Name="Ec_Status" ColumnName="Ec_Status" />
+                <ScalarProperty Name="Ref_ID" ColumnName="Ref_ID" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="DateNow" ColumnName="DateNow" />
+                <ScalarProperty Name="Year_Id" ColumnName="Year_Id" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Foreign_State" ColumnName="Foreign_State" />
+                <ScalarProperty Name="BMM_Center" ColumnName="BMM_Center" />
+                <ScalarProperty Name="Regular_school_Name" ColumnName="Regular_school_Name" />
+                <ScalarProperty Name="School_Address" ColumnName="School_Address" />
+                <ScalarProperty Name="Disability_Doc_Proof" ColumnName="Disability_Doc_Proof" />
+                <ScalarProperty Name="DOB_Place_Address" ColumnName="DOB_Place_Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_result">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Tbl_result">
+              <MappingFragment StoreEntitySet="Tbl_result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Form_No" ColumnName="Form_No" />
+                <ScalarProperty Name="seatnumber" ColumnName="seatnumber" />
+                <ScalarProperty Name="STD" ColumnName="STD" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sub1" ColumnName="Sub1" />
+                <ScalarProperty Name="Marks1" ColumnName="Marks1" />
+                <ScalarProperty Name="Sub2" ColumnName="Sub2" />
+                <ScalarProperty Name="Marks2" ColumnName="Marks2" />
+                <ScalarProperty Name="Sub3" ColumnName="Sub3" />
+                <ScalarProperty Name="Marks3" ColumnName="Marks3" />
+                <ScalarProperty Name="Sub4" ColumnName="Sub4" />
+                <ScalarProperty Name="Marks4" ColumnName="Marks4" />
+                <ScalarProperty Name="Sub5" ColumnName="Sub5" />
+                <ScalarProperty Name="Marks5" ColumnName="Marks5" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="Mother_Name" ColumnName="Mother_Name" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Contact_center" ColumnName="Contact_center" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Site_Status">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Tbl_Site_Status">
+              <MappingFragment StoreEntitySet="Tbl_Site_Status">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Subject">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Tbl_Subject">
+              <MappingFragment StoreEntitySet="Tbl_Subject">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Subject_Code" ColumnName="Subject_Code" />
+                <ScalarProperty Name="Subject_Name" ColumnName="Subject_Name" />
+                <ScalarProperty Name="Subject_Group" ColumnName="Subject_Group" />
+                <ScalarProperty Name="Handicaped" ColumnName="Handicaped" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="sample2" ColumnName="sample2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_AF_Backup">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Tbl_AF_Backup">
+              <MappingFragment StoreEntitySet="Tbl_AF_Backup">
+                <ScalarProperty Name="Form_No" ColumnName="Form_No" />
+                <ScalarProperty Name="UDISE_No" ColumnName="UDISE_No" />
+                <ScalarProperty Name="Contact_center" ColumnName="Contact_center" />
+                <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Middle_name" ColumnName="Middle_name" />
+                <ScalarProperty Name="Mother_name" ColumnName="Mother_name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="Mobile_no" ColumnName="Mobile_no" />
+                <ScalarProperty Name="Place_of_birth" ColumnName="Place_of_birth" />
+                <ScalarProperty Name="Date_of_birth" ColumnName="Date_of_birth" />
+                <ScalarProperty Name="Adhar_no" ColumnName="Adhar_no" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Minority_Religion" ColumnName="Minority_Religion" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Divyang" ColumnName="Divyang" />
+                <ScalarProperty Name="Medium" ColumnName="Medium" />
+                <ScalarProperty Name="Type_Of_User" ColumnName="Type_Of_User" />
+                <ScalarProperty Name="Subjects" ColumnName="Subjects" />
+                <ScalarProperty Name="Subject1" ColumnName="Subject1" />
+                <ScalarProperty Name="Subject2" ColumnName="Subject2" />
+                <ScalarProperty Name="Subject3" ColumnName="Subject3" />
+                <ScalarProperty Name="Subject4" ColumnName="Subject4" />
+                <ScalarProperty Name="Subject5" ColumnName="Subject5" />
+                <ScalarProperty Name="EC_Year" ColumnName="EC_Year" />
+                <ScalarProperty Name="EC_Number" ColumnName="EC_Number" />
+                <ScalarProperty Name="LastExamYear" ColumnName="LastExamYear" />
+                <ScalarProperty Name="LastExamSeatNo" ColumnName="LastExamSeatNo" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+                <ScalarProperty Name="Year_Id" ColumnName="Year_Id" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="DateNow" ColumnName="DateNow" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Application_Form_bk">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Tbl_Application_Form_bk">
+              <MappingFragment StoreEntitySet="Tbl_Application_Form_bk">
+                <ScalarProperty Name="Form_No" ColumnName="Form_No" />
+                <ScalarProperty Name="UDISE_No" ColumnName="UDISE_No" />
+                <ScalarProperty Name="Contact_center" ColumnName="Contact_center" />
+                <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Middle_name" ColumnName="Middle_name" />
+                <ScalarProperty Name="Mother_name" ColumnName="Mother_name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="Mobile_no" ColumnName="Mobile_no" />
+                <ScalarProperty Name="Place_of_birth" ColumnName="Place_of_birth" />
+                <ScalarProperty Name="Date_of_birth" ColumnName="Date_of_birth" />
+                <ScalarProperty Name="Adhar_no" ColumnName="Adhar_no" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Minority_Religion" ColumnName="Minority_Religion" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Divyang" ColumnName="Divyang" />
+                <ScalarProperty Name="Medium" ColumnName="Medium" />
+                <ScalarProperty Name="Type_Of_User" ColumnName="Type_Of_User" />
+                <ScalarProperty Name="Subjects" ColumnName="Subjects" />
+                <ScalarProperty Name="Subject1" ColumnName="Subject1" />
+                <ScalarProperty Name="Subject2" ColumnName="Subject2" />
+                <ScalarProperty Name="Subject3" ColumnName="Subject3" />
+                <ScalarProperty Name="Subject4" ColumnName="Subject4" />
+                <ScalarProperty Name="Subject5" ColumnName="Subject5" />
+                <ScalarProperty Name="EC_Year" ColumnName="EC_Year" />
+                <ScalarProperty Name="EC_Number" ColumnName="EC_Number" />
+                <ScalarProperty Name="LastExamYear" ColumnName="LastExamYear" />
+                <ScalarProperty Name="LastExamSeatNo" ColumnName="LastExamSeatNo" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+                <ScalarProperty Name="Year_Id" ColumnName="Year_Id" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="DateNow" ColumnName="DateNow" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Application_Form_Hallticket_bk">
+            <EntityTypeMapping TypeName="Open_Schooling_2025Model.Tbl_Application_Form_Hallticket_bk">
+              <MappingFragment StoreEntitySet="Tbl_Application_Form_Hallticket_bk">
+                <ScalarProperty Name="Form_No" ColumnName="Form_No" />
+                <ScalarProperty Name="UDISE_No" ColumnName="UDISE_No" />
+                <ScalarProperty Name="Contact_center" ColumnName="Contact_center" />
+                <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Middle_name" ColumnName="Middle_name" />
+                <ScalarProperty Name="Mother_name" ColumnName="Mother_name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="Mobile_no" ColumnName="Mobile_no" />
+                <ScalarProperty Name="Place_of_birth" ColumnName="Place_of_birth" />
+                <ScalarProperty Name="Date_of_birth" ColumnName="Date_of_birth" />
+                <ScalarProperty Name="Adhar_no" ColumnName="Adhar_no" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Minority_Religion" ColumnName="Minority_Religion" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Divyang" ColumnName="Divyang" />
+                <ScalarProperty Name="Medium" ColumnName="Medium" />
+                <ScalarProperty Name="Type_Of_User" ColumnName="Type_Of_User" />
+                <ScalarProperty Name="Subjects" ColumnName="Subjects" />
+                <ScalarProperty Name="Subject1" ColumnName="Subject1" />
+                <ScalarProperty Name="Subject2" ColumnName="Subject2" />
+                <ScalarProperty Name="Subject3" ColumnName="Subject3" />
+                <ScalarProperty Name="Subject4" ColumnName="Subject4" />
+                <ScalarProperty Name="Subject5" ColumnName="Subject5" />
+                <ScalarProperty Name="EC_Year" ColumnName="EC_Year" />
+                <ScalarProperty Name="EC_Number" ColumnName="EC_Number" />
+                <ScalarProperty Name="LastExamYear" ColumnName="LastExamYear" />
+                <ScalarProperty Name="LastExamSeatNo" ColumnName="LastExamSeatNo" />
+                <ScalarProperty Name="Seat_No" ColumnName="Seat_No" />
+                <ScalarProperty Name="Year_Id" ColumnName="Year_Id" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="DateNow" ColumnName="DateNow" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="Standard" ColumnName="Standard" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

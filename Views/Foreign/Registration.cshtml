@@ -1,0 +1,939 @@
+﻿@model Open_Schooling.Models.Foreign_Model
+@{
+    ViewBag.Title = "Foreign Registration";
+    Layout = "~/Views/Shared/HomeDashboard_Layout.cshtml";
+
+
+}
+<style>
+    @@media (min-width: 768px) and (max-width: 1199px) {
+        .respons {
+        }
+
+        .respons1 {
+            padding-top: 50px
+        }
+
+        .container .row {
+            align-items: center;
+            padding-left: 300px;
+        }
+    }
+
+    @@media(min-width:992px) and (max-width: 1199px) {
+        .col-md-1 {
+            display: none;
+        }
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<form id="submit_form">
+
+
+    <div class="container embed-responsive-item" style="margin-left:-10px">
+        <div class="row" style="font-size: medium; font-weight: bold; text-align: center; line-height: 30px; padding-top: 10px;">
+            Registration Form
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-lg-2">
+                <span>1)   First Name :</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-lg-3">
+                @Html.TextBoxFor(model => model.First_Name, new { @class = "form-control", @name = "First_Name ", @id = "First_Name", @required = "required" })
+                @Html.ValidationMessageFor(model => model.First_Name, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-lg-2">
+                <span>2)   Middle Name</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-lg-3">
+                @Html.EditorFor(model => model.Middle_Name, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                @Html.ValidationMessageFor(model => model.Middle_Name, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-lg-2">
+                <span>3)   Last Name:</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-lg-3">
+                @Html.EditorFor(model => model.Last_Name, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                @Html.ValidationMessageFor(model => model.Last_Name, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-lg-2">
+                <span>4)   Mother Name</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-lg-3">
+                @Html.EditorFor(model => model.Mother_Name, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                @Html.ValidationMessageFor(model => model.Mother_Name, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        @* <br />
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-lg-2">
+                    *)<span>  Nationality:</span><span style="color:Red">*</span>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <div>
+                            <label class="radio-inline" name="Nationality">
+                                @Html.RadioButtonFor(m => m.Nationality, "Indian", new { @id = "Indian" }) Indian
+                            </label>
+                            <label class="radio-inline" name="Nationality">
+                                @Html.RadioButtonFor(m => m.Nationality, "Foreign", new { @id = "Foreign" }) Foreign
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>*@
+        <br />
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-lg-2">
+                5)<span id="Nation">   Passport No / Aadhar No:</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-lg-3">
+                @Html.EditorFor(model => model.Adhar_no, new { htmlAttributes = new { @class = "form-control", @required = "required", maxLength = 12 } })
+                @Html.ValidationMessageFor(model => model.Adhar_no, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="col-lg-2">
+                <span>6)   Mobile No</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-lg-3">
+                @Html.EditorFor(model => model.Mobile_No, new { htmlAttributes = new { @class = "form-control", @required = "required", maxLength = 10 } })
+                @Html.ValidationMessageFor(model => model.Mobile_No, "", new { @class = "text-danger" })
+
+            </div>
+
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-lg-2">
+                <span>7)  Minority_Religion:</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.Minority_Religion, new List<SelectListItem>
+                               {
+                                   new SelectListItem { Text = "Non-Minority", Value = "Non-Minority"},
+                                   new SelectListItem { Text = "Muslim", Value = "Muslim"},
+                                   new SelectListItem { Text = "Christian", Value = "Christian"},
+                                    new SelectListItem { Text = "Buddhist", Value = "Buddhist"},
+                                   new SelectListItem { Text = "Sikh", Value = "Sikh"},
+                                    new SelectListItem { Text = "Parsi", Value = "Parsi"},
+                                   new SelectListItem { Text = "Jain", Value = "Jain"},
+
+                                }, "-Select-", new { @class = "btn btn-default dropdown-toggle", @style = "width:250px" })
+                </div>
+            </div>
+
+            <div class="col-lg-2">
+                <span>8) Address :</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-lg-3">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @id = "Address", @name = "Address" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-lg-2">
+                <span>9)   Pin Code No:</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-lg-3">
+                @Html.EditorFor(model => model.Pin_Code, new { htmlAttributes = new { @class = "form-control", @required = "required", maxLength = 6 } })
+                @Html.ValidationMessageFor(model => model.Pin_Code, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-lg-2">
+                <span>10)   Date of Birth:</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-lg-3">
+                <input type="text" class="form-control" id="Date_of_birth" name="Date_of_birth" style="width:250px;" placeholder="dd/mm/yyyy" />
+                @Html.ValidationMessageFor(model => model.Date_of_Birth, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-lg-2">
+                <span>11)   DOB in Words:</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-lg-3">
+                @Html.EditorFor(model => model.DOB_Words, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DOB_Words, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-lg-2">
+                <span>12)   Birth Place and Address:</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-lg-3">
+                @Html.EditorFor(model => model.DOB_Place_Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DOB_Place_Address, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <br />
+        @*<div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-lg-2">
+                    <span>13)   DOB Address:</span><span style="color:Red">*</span>
+                </div>
+                <div class="col-lg-3">
+                    @Html.EditorFor(model => model.DOB_Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DOB_Address, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+            <br />*@
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-lg-2">
+                <span>13)   Email:</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @name = "Email ", @id = "Email", } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <span>14)   Gender:</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <div>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.Gender, "Male", new { @id = "Male" }) Male
+                        </label>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.Gender, "Female", new { @id = "Female" }) Female
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-lg-2">
+                <span>15)   Standard:</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <div>
+                        @Html.DropDownListFor(model => model.Standard, new List<SelectListItem>
+                        {
+                            new SelectListItem { Text = "1st", Value = "1st"},
+                            new SelectListItem { Text = "2nd", Value = "2nd"},
+                            new SelectListItem { Text = "3rd", Value = "3rd"},
+                            new SelectListItem { Text = "4th", Value = "4th"},
+                            new SelectListItem { Text = "5th", Value = "5th"},
+                            new SelectListItem { Text = "6th", Value = "6th"},
+                            new SelectListItem { Text = "7th", Value = "7th"},
+                            new SelectListItem { Text = "8th", Value = "8th"},
+                            }, "-Select Standard-", new { @id = "Standard", @class = "btn btn-default dropdown-toggle", @style = "width:250px" })
+                        @Html.ValidationMessageFor(model => model.Standard, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            @*<div class="col-lg-2">
+                    <span>17)   Medium:</span><span style="color:Red">*</span>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        @Html.DropDownListFor(model => model.Medium, new List<SelectListItem>
+                                {
+                                    new SelectListItem { Text = "English", Value = "English"},
+                                    new SelectListItem { Text = "Marathi", Value = "Marathi"},
+                                    new SelectListItem { Text = "Hindi", Value = "Hindi"},
+                                    new SelectListItem { Text = "Urdu", Value = "Urdu"},
+                                    }, "-Select Medium-", new { @class = "btn btn-default dropdown-toggle", @style = "width:250px" })
+                        @Html.ValidationMessageFor(model => model.Medium, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>*@
+            <div class="col-lg-2">
+                <span>16)   Country :</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.Country, ViewBag.country as List<SelectListItem>, new { style = "width: 250px;", @class = "btn btn-default dropdown-toggle", @id = "country" })
+
+                    @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-1"></div>
+
+            <div class="col-lg-2">
+                <span>17)   State :</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.Foreign_State, new SelectList(string.Empty, "Value", "Text"), "-Select state-", new { style = "width: 250px;", @class = "btn btn-default dropdown-toggle", @id = "state" })
+
+                    @Html.ValidationMessageFor(model => model.Foreign_State, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <span>18)   Center list:</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    @Html.DropDownListFor(model => model.BMM_Center, new List<SelectListItem>
+                            { }, "-Select Center-", new { @class = "btn btn-default dropdown-toggle", @style = "width:250px", @id = "center" })
+                    @Html.ValidationMessageFor(model => model.BMM_Center, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-lg-2">
+                <span>19)       Regular School Name:</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    @Html.EditorFor(model => model.Regular_school_Name, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                    @Html.ValidationMessageFor(model => model.Regular_school_Name, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <span>20) School Address :</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.EditorFor(model => model.School_Address, new { htmlAttributes = new { @class = "form-control", @id = "Address", @name = "Address" } })
+                    @Html.ValidationMessageFor(model => model.School_Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-1"></div>
+
+
+            <div class="col-lg-2">
+                <span>21) Candidate Handicapped:</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <div>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.Candidate_Handicaped_YN, "Yes", new { @id = "HandicapedYes" }) Yes
+                        </label>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.Candidate_Handicaped_YN, "No", new { @id = "HandicapedNo" }) No
+                        </label>
+                        @Html.HiddenFor(m => m.Candidate_Handicaped_YN)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div id="Handicapcategory" style="display:none">
+                <div class="col-md-1"></div>
+                <div class="col-lg-2">
+                    <span>21. 1) If yes, Select Category :<span style="color: red">*</span></span>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <div>
+                            @Html.DropDownListFor(model => model.Handicap, new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "Blindness/Low Vision", Value = "Blindness/Low Vision"},
+                                new SelectListItem { Text = "Hearing Impairment", Value = "Hearing Impairment"},
+                                new SelectListItem { Text = "Locomotor Disability", Value = "Locomotor Disability"},
+                                new SelectListItem { Text = "Intellectual / Specific Learning Disability", Value = "Intellectual / Specific Learning Disability"},
+                             }, "Select ", new { @id = "Handicap", @class = "btn btn-default dropdown-toggle", @style = "width:250px" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <span>21. 2)   Upload Disability Document:</span><span style="color:Red">*</span>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <input type="file" name="Upload_Disability_Document" id="Disability_Doc_Proof" accept="image/jpeg, image/png" />
+                        @Html.ValidationMessageFor(model => model.Disability_Doc_Proof, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-lg-2">
+                <span>22)Types Of User:<span style="color: red">*</span></span>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <div>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.Type_Of_User, "Fresh", new { @id = "Type_Of_User" }) Fresh
+                        </label>
+                        <label class="radio-inline">
+                            @Html.RadioButtonFor(m => m.Type_Of_User, "Repeater", new { @id = "Type_Of_User2" }) Repeater
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="nsqfSubject" style="display:none">
+            <div class="col-md-1"></div>
+            <div class="col-sm-2">
+                <span>23)  Will you take NSQF subject? :<span style="color: red">*</span></span>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <div>
+                        <label class="radio-inline">
+                            <input id="NsqfYes" name="NSQF_Subject" type="radio" value="Yes">Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input id="NsqfNo" name="NSQF_Subject" type="radio" value="No"> No
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-sm-12">
+                <div class="col-md-1"></div>
+                <span style="font-weight:700">
+                    Subject :<span style="color: red">*</span>
+                </span><br />
+                <div class="col-md-1"></div>
+                @*<p style="font-weight:700;display:none" id="noteYes">
+                    Note-Group A- Any 1 or 2 language subject, Group B or Group C- Any 3 or 4 subjects (Note:- You have to select compulsory 5 subject in Group- A,B,C)
+                </p>
+
+                <p style="font-weight:700;display:none" id="noteNo">
+                    Note-Group A- Any 2 language subject, Group B - compulsory this subject, Group C- Any 1 subject
+                </p>*@
+            </div>
+        </div>
+
+        <div class="row" id="subjectGroup" style="display:none">
+            <ul style="font-weight:700">
+            </ul>
+            <div class="col-md-1"></div>
+            <div class="col-sm-4">
+                @*<span style="font-weight:700">
+                    Group_A
+                </span><br />*@
+                <span id="SubjectA">
+                </span>
+            </div>
+            @*<div class="col-sm-4">
+                    <span style="font-weight:700">
+                        Group-B
+                    </span><br />
+                    <span id="SubjectB">
+                    </span>
+
+                </div>
+                <div class="col-sm-4">
+                    <span style="font-weight:700">
+                        Group-C
+                    </span><br />
+                    <span id="SubjectC">
+                    </span><br />
+                    <span style="font-weight:700">
+                        Group-D
+                    </span><br />
+                    <span id="SubjectD"></span>
+                </div>*@
+        </div>
+        <div class="col-md-1"></div>
+        <div class="row" id="subjectD_Nsqf" style="display:none">
+            <div class="col-sm-4">
+                <span style="font-weight:700">
+                    Group-D-NSQF Subject
+                </span><br />
+                <span id="Subject_NSQF">
+                </span>
+            </div>
+        </div><br />
+
+        <div style="text-align:center">
+            <span id="extraSub" style="color:red; font-weight:bold">
+
+            </span>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+
+
+
+            <div class="col-lg-2">
+                <span>34)   Age Certified Proof:</span><span style="color:Red">*</span>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <input type="file" name="AgeCertificate" id="Age_Certified_Proof" accept="image/jpeg, image/png" />
+                    @Html.ValidationMessageFor(model => model.Age_Certified_Proof, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="respons">
+                <div class="col-md-1"></div>
+                <div class="col-sm-2" style="margin-top:40px">
+                    <span>
+                        25)Upload Photo<span style="color: red">*</span>
+                    </span>
+                </div>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="respons1">
+                <div class="col-md-1"></div>
+                <div class="col-sm-2" style="margin-top:40px">
+                    <span>
+                        26)   Upload Signature<span style="color: red">*</span>
+                    </span>
+                </div>
+                <div class="col-sm-3">
+                    <img src="~/Design/Images/sign.jpg" style="margin:10px" height="40" width="40" id="imagePreview1" />
+                    <input type="file" name="Upload_Sign" id="Signature" accept="image/jpg, image/png" onchange="ShowImagePreview(this,document.getElementById('imagePreview1'))" />
+
+                </div>
+            </div>
+        </div>
+        <div style="height:35px;"></div>
+
+        <div class="row">
+            <div class="col-md-1"></div>
+
+        </div>
+        <div class="row" id="subjectGroup" style="display:none">
+            <span id="AppId">
+            </span>
+        </div>
+        <center>
+            <input type="button" id="btn_submit" class="btn btn-block btn-primary  font-weight-bolder auth-form-btn" value="SUBMIT" onclick="passvalues()" style="background-color: #3eadcf;font-weight:bold; width:100px">
+        </center>
+    </div>
+</form>
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#Date_of_birth").datepicker({
+            dateFormat: "dd-mm-yy", // Sets the format
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "1900:+0"
+        });
+    });
+</script>
+
+<script type="text/javascript">
+ $(document).ready(function () {
+
+        $("#btn_submit").click(function (e) {
+
+            debugger
+                    var formData = new FormData($(submit_form)[0]);
+                    console.log(formData);
+                    $.ajax({
+                        url: "../Foreign/Registration",
+                        type: "POST",
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        beforeSend: function () {
+                            Showloader();
+                        },
+                        complete: function () {
+                            Hideloader();
+                        },
+                        success: function (Data) {
+                            if (Data.Result) {
+                                debugger;
+                                Success_Alert(Data.Response);
+                                $(submit_form)[0].reset()
+                                if (Data.Result) {
+
+                                    window.location.replace(Data.Message);
+
+                                }
+                            }
+                            else {
+                                Error_Alert(Data.Response);
+                            }
+
+                        },
+                        error: function (e1, e2, e3) {
+
+                        }
+                    });
+
+        })
+
+
+    });
+
+    function passvalues() {
+
+
+        var firstpara = document.getElementById("First_Name").value;
+        localStorage.setItem("textvalue1", firstpara);
+
+        var secondpara = document.getElementById("Last_Name").value;
+        localStorage.setItem("textvalue2", secondpara);
+
+        var thirdpara = document.getElementById("Village").value;
+        localStorage.setItem("textvalue3", thirdpara);
+
+        var fourthpara = document.getElementById("Taluka").value;
+        localStorage.setItem("textvalue4", fourthpara);
+
+        var fifthpara = document.getElementById("District").value;
+        localStorage.setItem("textvalue5", fifthpara);
+
+        var foursixthpara = document.getElementById("State").value;
+        localStorage.setItem("textvalue6", foursixthpara);
+
+        var seventhpara = document.getElementById("Pin_Code").value;
+        localStorage.setItem("textvalue7", seventhpara);
+
+        var eighthpara = document.getElementById("Mobile_No").value;
+        localStorage.setItem("textvalue8", eighthpara);
+
+        var ninethpara = document.getElementById("Email").value;
+        localStorage.setItem("textvalue9", ninethpara);
+
+
+        var tenthpara = '@TempData["USERNAME"]'
+        localStorage.setItem("textvalue10", tenthpara);
+
+        var elepara = document.getElementById("Address").value;
+        localStorage.setItem("textvalue11", elepara);
+
+
+    }
+
+    $(document).ready(function () {
+        $('input[name="gender"]').change(function () {
+            let selectedValue = $(this).val();
+            $('#genderLabel').text('Selected Gender: ' + selectedValue);
+        });
+    });
+
+    $("#Foreign").change(function () {
+        $("#Nation").text(" Passport No:");
+    });
+
+    $("#Indian").change(function () {
+        $("#Nation").text(" Aadhar No:");
+    });
+
+         $("#country").change(function () {
+            $("#state").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getState")',
+                dataType: 'json',
+                data: { id: $("#country").val() },
+                success: function (center) {
+
+                    $.each(center, function (i, center) {
+                        $("#state").append('<option value="' + center.Value + '">' + center.Text + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        })
+
+        $("#state").change(function () {
+            $("#center").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getCenter")',
+                dataType: 'json',
+                data: { id: $("#state").val() },
+                success: function (center) {
+                    $.each(center, function (i, center) {
+                        $("#center").append('<option value="' + center.Value + '">' + center.Text + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        })
+
+        $("#Taluka_Center").change(function () {
+            $("#Center").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getCenter")',
+                dataType: 'json',
+                data: { id: $("#Taluka_Center").val() },
+                success: function (center) {
+
+                    $.each(center, function (i, center) {
+                        $("#Center").append('<option value="' + center.Value + '">' + center.Text + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        })
+
+        $("#Center").change(function () {
+            $("#Center_Code").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getCenterCode")',
+                dataType: 'json',
+                data: { center: $("#Center").val() },
+                success: function (centercode) {
+                    $("#Center_Code").val(centercode);
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        })
+
+      $("#HandicapedYes").click(function () {
+            $("#SubjectA").empty();
+            $("#SubjectB").empty();
+            $("#SubjectC").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getSubject")',
+                dataType: 'json',
+                data: {
+                    id: $("#Standard").val(),
+                    handicaped: $("#HandicapedYes").val()
+                },
+
+                success: function (obj) {
+                    $.each(obj.SubjectListA, function (key, value) {
+                        $("#SubjectA").append('<input id="SUB" name="SUB" class="SUBa" checked onclick = "return chkMaxsubject()" value=' + value.Subject_Code + ' type="checkbox">' + value.Subject_Name + '</input>' + '<br/>');
+                    });
+                   @* $.each(obj.SubjectListB, function (key, value) {
+                        $("#SubjectB").append('<input id="SUB" name="SUB" class="SUBb" onclick = "return chkMaxsubject()" value=' + value.Subject_Code + ' type="checkbox">' + value.Subject_Name + '</input >' + '<br/>');
+                    });
+                    $.each(obj.SubjectListC, function (key, value) {
+                        $("#SubjectC").append('<input id="SUB" name="SUB" class="SUBc" onclick = "return chkMaxsubject()" value=' + value.Subject_Code + ' type="checkbox">' + value.Subject_Name + '</input>' + '<br/>');
+                    });*@
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+          return true;
+      })
+
+    $("#HandicapedNo").click(function () {
+        $("#Handicapcategory").hide();
+        $("#SubjectA").empty();
+       @* $("#SubjectB").empty();
+        $("#SubjectC").empty();
+        $("#SubjectD").empty();*@
+        $("#AppId").empty();
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("getSubject")',
+            dataType: 'json',
+            data: {
+                id: $("#Standard").val(),
+                handicaped: $("#HandicapedNo").val()
+            },
+            success: function (obj) {
+                $.each(obj.SubjectListA, function (key, value) {
+                    $("#SubjectA").append('<input id="SUB" name="SUB" class="SUBA" checked onclick = "return chkMaxsubject()" value=' + value.Subject_Code + ' type="checkbox" >' + value.Subject_Name + '</input>' + '<br/>');
+                });
+               @* $.each(obj.SubjectListB, function (key, value) {
+                    $("#SubjectB").append('<input id="SUBB" name="SUB" class="SUBB" onclick = "return chkMaxsubject()" value=' + value.Subject_Code + ' type="checkbox" >' + value.Subject_Name + '</input>' + '<br/>');
+
+
+                });
+                $.each(obj.SubjectListC, function (key, value) {
+                    $("#SubjectC").append('<input id="SUB" name="SUB" class="SUBC" onclick = "return chkMaxsubject()" value=' + value.Subject_Code + ' type="checkbox" >' + value.Subject_Name + '</input>' + '<br/>');
+                });
+                $.each(obj.SubjectListD, function (key, value) {
+                    $("#SubjectD").append('<input id="SUB" name="SUB" class="SUBD" onclick = "return chkMaxsubject()" value=' + value.Subject_Code + ' type="checkbox" >' + value.Subject_Name + '</input>') + '<br/>';
+                });*@
+                @*var subB = document.getElementsByClassName('SUBB');
+
+                for (var i = 0; i < subB.length; i++) {
+                    subB[i].checked = true;
+                }
+                if ($("#Foreign").prop("checked") == true) {
+                    var subA = document.getElementsByClassName('SUBA');
+                    for (var i = 0; i < subA.length; i++) {
+                        if (i == 0) { subA[i].checked = true; }
+                    }
+                }*@
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+        });
+        return true;
+     })
+   //----------------------------------------------------------------------------------------
+
+    if ($("#HandicapedYes").checked == true) {
+          $("#Standard").change(function () {
+
+         $("#SubjectA").empty();
+            $("#SubjectB").empty();
+            $("#SubjectC").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getSubject")',
+                dataType: 'json',
+                data: {
+                    id: $("#Standard").val(),
+                    handicaped: $("#HandicapedYes").val()
+                },
+                
+                success: function (obj) {
+                    $.each(obj.SubjectListA, function (key, value) {
+                        $("#SubjectA").append('<input id="SUB" name="SUB" class="SUBa" onclick = "return chkMaxsubject()" value=' + value.Subject_Code + ' type="checkbox">' + value.Subject_Name + '</input>' + '<br/>');
+                    });
+                   @* $.each(obj.SubjectListB, function (key, value) {
+                        $("#SubjectB").append('<input id="SUB" name="SUB" class="SUBb" onclick = "return chkMaxsubject()" value=' + value.Subject_Code + ' type="checkbox">' + value.Subject_Name + '</input >' + '<br/>');
+                    });
+                    $.each(obj.SubjectListC, function (key, value) {
+                        $("#SubjectC").append('<input id="SUB" name="SUB" class="SUBc" onclick = "return chkMaxsubject()" value=' + value.Subject_Code + ' type="checkbox">' + value.Subject_Name + '</input>' + '<br/>');
+                    });*@
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+              return true;
+
+    });
+    }else {
+          $("#Standard").change(function () {
+
+
+        $("#SubjectA").empty();
+        $("#SubjectB").empty();
+        $("#SubjectC").empty();
+        $("#SubjectD").empty();
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("getSubject")',
+            dataType: 'json',
+            data: {
+                id: $("#Standard").val(),
+                handicaped: $("#HandicapedNo").val()
+            },
+            success: function (obj) {
+                $.each(obj.SubjectListA, function (key, value) {
+                    $("#SubjectA").append('<input id="SUB" name="SUB" class="SUBA" onclick = "return chkMaxsubject()" value=' + value.Subject_Code + ' type="checkbox" >' + value.Subject_Name + '</input>' + '<br/>');
+                });
+                @*$.each(obj.SubjectListB, function (key, value) {
+                    $("#SubjectB").append('<input id="SUBB" name="SUB" class="SUBB" onclick = "return chkMaxsubject()" value=' + value.Subject_Code + ' type="checkbox" >' + value.Subject_Name + '</input>' + '<br/>');
+
+
+                });
+                $.each(obj.SubjectListC, function (key, value) {
+                    $("#SubjectC").append('<input id="SUB" name="SUB" class="SUBC" onclick = "return chkMaxsubject()" value=' + value.Subject_Code + ' type="checkbox" >' + value.Subject_Name + '</input>' + '<br/>');
+                });
+                $.each(obj.SubjectListD, function (key, value) {
+                    $("#SubjectD").append('<input id="SUB" name="SUB" class="SUBD" onclick = "return chkMaxsubject()" value=' + value.Subject_Code + ' type="checkbox" >' + value.Subject_Name + '</input>') + '<br/>';
+                });*@
+                @*var subB = document.getElementsByClassName('SUBB');
+
+                for (var i = 0; i < subB.length; i++) {
+                    subB[i].checked = true;
+                }
+                if ($("#Foreign").prop("checked") == true) {
+                    var subA = document.getElementsByClassName('SUBA');
+                    for (var i = 0; i < subA.length; i++) {
+                        if (i == 0) { subA[i].checked = true;}
+                    }
+                }*@
+
+
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+        });
+              return true;
+
+    });
+    }
+
+
+
+
+        $("#NsqfYes").click(function () {
+            $("#Subject_NSQF").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getNSQFSubject")',
+                dataType: 'json',
+                data: {
+                    standard: $("#Standard").val(),
+                },
+                success: function (objc) {
+                    $.each(objc, function (key, value) {
+                        $("#Subject_NSQF").append('<input id="SUBNSQF" name="SUBNSQF" onclick = "return chkMaxsubject()" value=' + value.Subject_Code + '  type="checkbox">' + value.Subject_Name + '</input>' + '<br/>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return true;
+        })
+
+
+
+</script>
+
+

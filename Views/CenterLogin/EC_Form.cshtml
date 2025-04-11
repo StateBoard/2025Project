@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "EC_Form";
+
+}
+
+
+
+
+@using (Html.BeginForm("EC_Form", "CenterLogin", FormMethod.Post))
+{
+    <div class="newContainer" style="width:100%;">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <center>
+            <h1 class="text-center text-info">Download EC</h1>
+            <div class="form-group" style="margin-left: 60px; margin-top: 40px;">
+                <label class="text-info">Enter Application Id:</label><br>
+                <input type="text" name="ApplicationId" id="ApplicationId" class="form-control">
+            </div>
+            <div class="form-group" style="margin-left: 60px; margin-top: 25px;">
+                <label class="text-info">Enter Mobile No:</label><br>
+                <input type="text" name="Mobile_no" id="Mobile_no" class="form-control">
+            </div>
+            <div class="form-group" style="margin-left: 170px; margin-top: 35px;">
+                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+            </div>
+            <div class="form-group" style="margin-left:150px; padding-bottom:40px;"></div>
+        </center>
+    </div>
+}
+

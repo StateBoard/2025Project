@@ -1,0 +1,128 @@
+﻿@model Open_Schooling.Models.Division_List_Model
+@{
+    ViewBag.Title = "Download_State_Record";
+}
+
+
+<style>
+
+    table, th, td {
+        border: 1px solid #c1d0d9b8;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+
+    #btn_Excel {
+        width: 200px;
+        padding: 8px;
+        position: absolute;
+        right: 20px;
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-sm-6">
+        <h2>StateDashboard</h2>
+    </div>
+    <div class="col-sm-6">
+
+
+
+        <h2></h2>
+        <input type="button" class="btn btn-success" id="btn_Excel" value="Download Excel"><br />
+    </div>
+</div>
+<div class="row">
+    <div style="float:right;  margin-right:50px;padding-top:10px;color:red;font-size:18px;">
+
+    </div>
+</div>
+<br />
+<div class="row" style="border:inset 2px  #3eadcf"></div>
+<br />
+<form id="batch_form">
+
+    <div class="row">
+
+        <center>
+            <div class="col-sm-2">
+                <label>Select Type :</label>
+                @Html.DropDownListFor(m => m.Div_Code, new List<SelectListItem> {
+                new SelectListItem { Text = "Select Type",   Value = "0", Selected = true,Disabled = true},
+                new SelectListItem{Text="Registration Form", Value="1"},
+                new SelectListItem{Text="Download EC", Value="2"},
+                new SelectListItem{Text="Download Hall Ticket", Value="3"},
+
+                }, new { @name = "Type", @class = "form-control" })
+            </div>
+
+        </center>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <center>
+       
+        <table class="AppFormTable" id="tbl_list" style="background-color: #e7fafe;"></table>
+    </center>
+</form>
+
+
+<script>
+
+    $("#Div_Code").change(function () {
+
+        Get_Inspection_Record("0");
+
+    });
+    $("#btn_Excel").click(function () {
+
+        Get_Inspection_Record("1");
+
+    });
+    function Get_Inspection_Record(Excel) {
+        $.ajax({
+            url: 'Download_State_Record',
+            type: 'Post',
+            dataType: 'Json',
+            data: {
+                Div_Code: $("#Div_Code").val(),
+
+                Excel: Excel
+            },
+            success: function (data) {
+
+                var temp = "";
+                temp += `<thead>     <tr><td>Sr.No.</td>                            <td>Enrollment_No</td>               <td>ApplicationId </td>               <td> First_Name</td>            <td>Middle_Name </td>          <td> Last_Name</td>           <td>Mother_Name </td>            <td>Adhar_no </td>          <td> Mobile_No</td>             <td>Address </td>          <td>Village </td>             <td>District </td>              <td>Taluka </td>             <td>State </td>         <td>Pin_Code </td>            <td>Date_of_Birth </td           ><td>DOB_Words </td>           <td>DOB_Village </td>            <td>DOB_Taluka </td>         <td> DOB_District</td>                <td>Email </td>               <td> Gender</td>         <td> Standard</td>               <td>Medium </td>     <td>District_Center </td>               <td> Taluka_Center</td>             <td> Center</td>                 <td>Center_Code </td>               <td> Previous_Attend_School_YN </td>      <td> Previous_Attend_School </td>         <td>Handicap  </td>       <td> Candidate_Handicaped_YN </td>                  <td> Subject_List </td>             <td>Minority_Religion  </td>           <td>Nsqf_Subject  </td>     <td> Password </td>               <td> Payment_Status </td>    <td> DateNow </td></tr></thead><tbody`;
+                if (data.Result) {
+                    $("#tbl_list").empty();
+                    $.each(data.Response, function (i, data) {
+                        temp += `<tr><td>` + (i + 1) + `</td><td>` + data.Enrollment_No + `</td><td>` + data.ApplicationId + `</td><td>` + data.First_Name + `</td><td>` + data.Middle_Name + `</td><td>` + data.Last_Name + `</td><td>` + data.Mother_Name + `</td><td>` + data.Adhar_no + `</td><td>` + data.Mobile_No + `</td><td>` + data.Address + `</td><td>` + data.Village + `</td><td>` + data.District + `</td><td>` + data.Taluka + `</td><td>` + data.State + `</td><td>` + data.Pin_Code + `</td><td>` + data.Date_of_Birth + `</td><td>` + data.DOB_Words + `</td><td>` + data.DOB_Village + `</td><td>` + data.DOB_Taluka + `</td><td>` + data.DOB_District + `</td><td>` + data.Email + `</td><td>` + data.Gender + `</td><td>` + data.Standard + `</td><td>` + data.Medium + `</td><td>` + data.District_Center + `</td><td>` + data.Taluka_Center + `</td><td>` + data.Center + `</td><td>` + data.Center_Code + `</td><td>` + data.Previous_Attend_School_YN + `</td><td>` + data.Previous_Attend_School + `</td><td>` + data.Handicap + `</td><td>` + data.Candidate_Handicaped_YN + `</td><td>` + data.Subject_List + `</td><td>` + data.Minority_Religion + `</td><td>` + data.Nsqf_Subject + `</td><td>` + data.Password + `</td><td>` + data.Payment_Status + `</td><td>` + data.DateNow + `</td></tr>`;
+                    });
+                    temp += `</tbody>`;
+                    $("#tbl_list").append(temp);
+
+                    if (Excel == "1") {
+
+                        window.location.href = "../State/" + data.FileName + ".xlsx";
+
+                    }
+                }
+            },
+            
+        });
+    }
+</script>
+
